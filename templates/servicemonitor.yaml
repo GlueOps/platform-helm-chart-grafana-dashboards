@@ -1,0 +1,29 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: vault
+  labels:
+    service: vault
+spec:
+  namespaceSelector:
+    matchNames:
+      - glueops-core-vault
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: vault
+  endpoints:
+  - honorLabels: true
+    path: /v1/sys/metrics
+    port: https
+    scheme: https
+    tlsConfig:
+      insecureSkipVerify: true
+    relabelings:
+    - sourceLabels: [__meta_kubernetes_pod_container_port_name]
+      regex: https
+      action: keep
+    - sourceLabels: [__meta_kubernetes_service_name]
+      regex: vault
+      action: keep
+---
