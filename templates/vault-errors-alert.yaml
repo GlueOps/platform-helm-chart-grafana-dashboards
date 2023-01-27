@@ -7,90 +7,92 @@ metadata:
 data:
   vault-errors.json: |
     {
-        "id": 1,
-        "uid": "uuK79loVz",
-        "orgID": 1,
-        "folderUID": "-CInr_TVk",
-        "ruleGroup": "critical_alerts",
-        "title": "Panel Title",
-        "condition": "B",
-        "data": [
+        "groups": [
             {
-                "refId": "A",
-                "queryType": "range",
-                "relativeTimeRange": {
-                    "from": 21600,
-                    "to": 0
-                },
-                "datasourceUid": "P8E80F9AEF21F6940",
-                "model": {
-                    "datasource": {
-                        "type": "loki",
-                        "uid": "P8E80F9AEF21F6940"
-                    },
-                    "editorMode": "code",
-                    "expr": "rate({namespace=\"glueops-core-vault\"} |~ \".*ERROR.*\" [1m])",
-                    "intervalMs": 1000,
-                    "maxDataPoints": 43200,
-                    "queryType": "range",
-                    "refId": "A"
-                }
-            },
-            {
-                "refId": "B",
-                "queryType": "",
-                "relativeTimeRange": {
-                    "from": 21600,
-                    "to": 0
-                },
-                "datasourceUid": "-100",
-                "model": {
-                    "conditions": [
-                        {
-                            "evaluator": {
-                                "params": [
-                                    0,
-                                    0
-                                ],
-                                "type": "gt"
+                "orgID": 1,
+                "name": "critical_errors",
+                "folder": "critical_errors",
+                "interval": "60s",
+                "rules": [
+                    {
+                        "uid": "critical_alert_vault",
+                        "title": "Vault Error",
+                        "condition": "B",
+                        "noDataState": "OK",
+                        "data": [
+                            {
+                                "refId": "A",
+                                "queryType": "range",
+                                "relativeTimeRange": {
+                                    "from": 21600,
+                                    "to": 0
+                                },
+                                "datasourceUid": "P8E80F9AEF21F6940",
+                                "model": {
+                                    "editorMode": "code",
+                                    "expr": "rate({namespace=\"glueops-core-vault\"} |~ \".*ERROR.*\" [1m])",
+                                    "hide": false,
+                                    "intervalMs": 1000,
+                                    "legendFormat": "__auto",
+                                    "maxDataPoints": 43200,
+                                    "range": true,
+                                    "refId": "A"
+                                }
                             },
-                            "operator": {
-                                "type": "and"
-                            },
-                            "query": {
-                                "params": [
-                                    "A"
-                                ]
-                            },
-                            "reducer": {
-                                "params": [],
-                                "type": "avg"
-                            },
-                            "type": "query"
-                        }
-                    ],
-                    "datasource": {
-                        "name": "Expression",
-                        "type": "__expr__",
-                        "uid": "__expr__"
-                    },
-                    "expression": "A",
-                    "hide": false,
-                    "intervalMs": 1000,
-                    "maxDataPoints": 43200,
-                    "reducer": "last",
-                    "refId": "B",
-                    "type": "classic_conditions",
-                    "window": ""
-                }
+                            {
+                                "refId": "B",
+                                "queryType": "",
+                                "relativeTimeRange": {
+                                    "from": 21600,
+                                    "to": 0
+                                },
+                                "datasourceUid": "-100",
+                                "model": {
+                                    "conditions": [
+                                        {
+                                            "evaluator": {
+                                                "params": [
+                                                    0,
+                                                    0
+                                                ],
+                                                "type": "gt"
+                                            },
+                                            "operator": {
+                                                "type": "and"
+                                            },
+                                            "query": {
+                                                "params": [
+                                                    "A"
+                                                ]
+                                            },
+                                            "reducer": {
+                                                "params": [],
+                                                "type": "avg"
+                                            },
+                                            "type": "query"
+                                        }
+                                    ],
+                                    "datasource": {
+                                        "name": "Expression",
+                                        "type": "__expr__",
+                                        "uid": "__expr__"
+                                    },
+                                    "expression": "A",
+                                    "hide": false,
+                                    "intervalMs": 1000,
+                                    "maxDataPoints": 43200,
+                                    "reducer": "last",
+                                    "refId": "B",
+                                    "type": "classic_conditions",
+                                    "window": ""
+                                }
+                            }
+                        ],
+                        "for": "5m",
+                        "execErrState": "Error"
+                    }
+                ]
             }
-        ],
-        "updated": "2023-01-26T22:41:48Z",
-        "noDataState": "NoData",
-        "execErrState": "Error",
-        "for": "5m",
-        "annotations": {
-            "__dashboardUid__": "_RdnX_oVz",
-            "__panelId__": "2"
-        }
+        ]
     }
+        
