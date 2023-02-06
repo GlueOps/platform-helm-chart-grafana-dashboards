@@ -81,11 +81,6 @@ data:
       "templating": {
         "list": [
           {
-            "current": {
-              "selected": false,
-              "text": "myapp-venkatamutyala-patch-1-2",
-              "value": "myapp-venkatamutyala-patch-1-2"
-            },
             "datasource": {
               "type": "loki",
               "uid": "P8E80F9AEF21F6940"
