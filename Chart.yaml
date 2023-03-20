@@ -1,6 +1,6 @@
 apiVersion: v2
 name: glueops-grafana-dashboards
-description: A Helm chart for Grafana Dashboards for the GlueOps Platform
+description: A Helm chart for Grafana Dashboards for the GlueOps Platform. Given how Helm template works whenever you have a `{{var}}` in your grafana json you need to change it so that its excplitity escaped with a backtick. ORIGINAL- {{kubernetes_pod_name}} WORKING- ```{{`{{kubernetes_pod_name}}`}}```
 
 # A chart can be either an 'application' or a 'library' chart.
 #
