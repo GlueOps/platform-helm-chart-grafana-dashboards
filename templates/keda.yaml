@@ -181,7 +181,7 @@ data:
               },
               "editorMode": "code",
               "expr": "sum by(job) (rate(keda_scaler_errors_total{}[5m]))",
-              "legendFormat": "{{ job }}",
+              "legendFormat": "{{`{{ job }}`}}",
               "range": true,
               "refId": "A"
             }
@@ -319,7 +319,7 @@ data:
               },
               "editorMode": "code",
               "expr": "sum by(scaler) (rate(keda_scaler_errors{namespace=~\"$namespace\", scaledObject=~\"$scaledObject\", scaler=~\"$scaler\"}[5m]))",
-              "legendFormat": "{{ scaler }}",
+              "legendFormat": "{{`{{ scaler }}`}}",
               "range": true,
               "refId": "A"
             }
@@ -427,7 +427,7 @@ data:
               },
               "editorMode": "code",
               "expr": "sum by(scaledObject) (rate(keda_scaled_object_errors{namespace=~\"$namespace\", scaledObject=~\"$scaledObject\"}[5m]))",
-              "legendFormat": "{{ scaledObject }}",
+              "legendFormat": "{{`{{ scaledObject }}`}}",
               "range": true,
               "refId": "A"
             }
@@ -535,7 +535,7 @@ data:
               },
               "editorMode": "code",
               "expr": "sum by(metric) (rate(keda_scaler_metrics_value{namespace=~\"$namespace\", metric=~\"$metric\"}[5m]))",
-              "legendFormat": "{{ metric }}",
+              "legendFormat": "{{`{{ metric }}`}}",
               "range": true,
               "refId": "A"
             }
@@ -630,7 +630,7 @@ data:
               },
               "editorMode": "code",
               "expr": "changes(kube_deployment_spec_replicas{deployment=~\"$scaledObject\"}[1m])",
-              "legendFormat": "{{ deployment }}",
+              "legendFormat": "{{`{{ deployment }}`}}",
               "range": true,
               "refId": "A"
             },
@@ -642,7 +642,7 @@ data:
               "editorMode": "code",
               "expr": "changes(kube_statefulset_replicas{statefulset=~\"$scaledObject\"}[1m])",
               "hide": false,
-              "legendFormat": "{{ statefulset }}",
+              "legendFormat": "{{`{{ statefulset }}`}}",
               "range": true,
               "refId": "B"
             }
