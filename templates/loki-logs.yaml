@@ -5,7 +5,7 @@ metadata:
   labels:
     grafana_dashboard: "1"
 data:
-  loki-logs.json: |
+  glueops-loki-logs.json: |
     {
       "annotations": {
         "list": [
