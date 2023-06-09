@@ -6,7 +6,7 @@ metadata:
     grafana_dashboard: "1"
 data:
 # https://raw.githubusercontent.com/debezium/debezium-examples/main/monitoring/debezium-grafana/debezium-dashboard.json
-  debezium-generic.json: |
+  glueops-debezium-generic.json: |
     {
       "annotations": {
         "list": [
