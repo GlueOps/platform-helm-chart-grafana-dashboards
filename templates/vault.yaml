@@ -6,7 +6,7 @@ metadata:
     grafana_dashboard: "1"
 data:
 #https://grafana.com/grafana/dashboards/12904-hashicorp-vault/
-  vault.json: |
+  glueops-vault.json: |
     {
       "annotations": {
         "list": [
