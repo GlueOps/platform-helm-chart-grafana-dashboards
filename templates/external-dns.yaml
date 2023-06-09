@@ -6,7 +6,7 @@ metadata:
     grafana_dashboard: "1"
 data:
 #https://grafana.com/grafana/dashboards/15038-external-dns/
-  external-dns.json: |
+  glueops-external-dns.json: |
     {
         "annotations": {
           "list": [

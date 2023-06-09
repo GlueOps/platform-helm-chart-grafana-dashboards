@@ -6,7 +6,7 @@ metadata:
     grafana_dashboard: "1"
 data:
 #https://grafana.com/grafana/dashboards/11271-strimzi-kafka/
-  strimzi-kafka.json: |
+  glueops-strimzi-kafka.json: |
     {
       "annotations": {
         "list": [
