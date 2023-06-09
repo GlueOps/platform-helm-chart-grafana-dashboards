@@ -6,7 +6,7 @@ metadata:
     grafana_dashboard: "1"
 data:
 #https://github.com/kedacore/keda/blob/main/config/grafana/keda-dashboard.json
-  keda.json: |
+  glueops-keda.json: |
     {
       "annotations": {
         "list": [
