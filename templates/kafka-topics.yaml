@@ -6,7 +6,7 @@ metadata:
     grafana_dashboard: "1"
 data:
 #https://grafana.com/grafana/dashboards/10122-kafka-topics/
-  kafka-topics.json: |
+  glueops-kafka-topics.json: |
     {
         "__inputs": [],
         "__requires": [
