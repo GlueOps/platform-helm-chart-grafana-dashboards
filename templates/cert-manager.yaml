@@ -6,7 +6,7 @@ metadata:
     grafana_dashboard: "1"
 data:
 #https://grafana.com/grafana/dashboards/11001-cert-manager/
-  cert-manager.json: |
+  glueops-cert-manager.json: |
     {
         "annotations": {
           "list": [
