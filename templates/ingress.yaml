@@ -7,7 +7,7 @@ metadata:
 data:
 #https://grafana.com/grafana/dashboards/12559-grafana-loki-dashboard-for-nginx-service-mesh/
 #https://grafana.com/grafana/dashboards/13865-fgc-nginx01-web-analytics/
-  ingress-by-host.json: |
+  glueops-ingress-by-host.json: |
     {
       "annotations": {
         "list": [
