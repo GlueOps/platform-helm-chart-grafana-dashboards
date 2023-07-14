@@ -27,3 +27,17 @@ spec:
       regex: vault
       action: keep
 ---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: glueops-network-exporter
+spec:
+  endpoints:
+  - path: /metrics
+    port: http
+  namespaceSelector:
+    matchNames:
+    - glueops-core-network-exporter
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: glueops-network-exporter

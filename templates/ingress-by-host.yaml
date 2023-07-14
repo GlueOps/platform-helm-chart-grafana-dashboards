@@ -34,7 +34,7 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 33,
+      "id": 47,
       "links": [],
       "liveNow": false,
       "panels": [
@@ -50,7 +50,9 @@ data:
               },
               "custom": {
                 "align": "auto",
-                "displayMode": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
                 "filterable": true,
                 "inspect": false
               },
@@ -77,8 +79,11 @@ data:
                 },
                 "properties": [
                   {
-                    "id": "custom.displayMode",
-                    "value": "gradient-gauge"
+                    "id": "custom.cellOptions",
+                    "value": {
+                      "mode": "gradient",
+                      "type": "gauge"
+                    }
                   },
                   {
                     "id": "color",
@@ -110,7 +115,9 @@ data:
           },
           "id": 2,
           "options": {
+            "cellHeight": "sm",
             "footer": {
+              "countRows": false,
               "fields": "",
               "reducer": [
                 "sum"
@@ -125,7 +132,7 @@ data:
               }
             ]
           },
-          "pluginVersion": "9.3.6",
+          "pluginVersion": "10.0.1",
           "targets": [
             {
               "datasource": {
@@ -133,7 +140,7 @@ data:
                 "uid": "P8E80F9AEF21F6940"
               },
               "editorMode": "code",
-              "expr": "topk(10, sum by (http_user_agent) (count_over_time({app=\"ingress-nginx\"} | json | host = \"$host\" |  __error__=\"\" [$__interval])))",
+              "expr": "topk(10, sum by (http_user_agent) (count_over_time({app=\"ingress-nginx\", glueops_job_name=\"nginx-with-host\", http_host = \"$host\"} | json |  __error__=\"\" [$__interval])))",
               "queryType": "range",
               "refId": "A"
             }
@@ -178,7 +185,9 @@ data:
               },
               "custom": {
                 "align": "auto",
-                "displayMode": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
                 "filterable": true,
                 "inspect": false
               },
@@ -205,8 +214,11 @@ data:
                 },
                 "properties": [
                   {
-                    "id": "custom.displayMode",
-                    "value": "gradient-gauge"
+                    "id": "custom.cellOptions",
+                    "value": {
+                      "mode": "gradient",
+                      "type": "gauge"
+                    }
                   },
                   {
                     "id": "color",
@@ -242,7 +254,9 @@ data:
           },
           "id": 4,
           "options": {
+            "cellHeight": "sm",
             "footer": {
+              "countRows": false,
               "fields": "",
               "reducer": [
                 "sum"
@@ -257,7 +271,7 @@ data:
               }
             ]
           },
-          "pluginVersion": "9.3.6",
+          "pluginVersion": "10.0.1",
           "targets": [
             {
               "datasource": {
@@ -265,7 +279,7 @@ data:
                 "uid": "P8E80F9AEF21F6940"
               },
               "editorMode": "code",
-              "expr": "topk(10, sum by (uri) (count_over_time({app=\"ingress-nginx\"} | json | host = \"$host\" |  __error__=\"\" [$__interval])))",
+              "expr": "topk(10, sum by (uri) (count_over_time({app=\"ingress-nginx\", glueops_job_name=\"nginx-with-host\", http_host = \"$host\"} | json |  __error__=\"\" [$__interval])))",
               "queryType": "range",
               "refId": "A"
             }
@@ -313,7 +327,9 @@ data:
               },
               "custom": {
                 "align": "auto",
-                "displayMode": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
                 "filterable": true,
                 "inspect": false
               },
@@ -340,8 +356,11 @@ data:
                 },
                 "properties": [
                   {
-                    "id": "custom.displayMode",
-                    "value": "gradient-gauge"
+                    "id": "custom.cellOptions",
+                    "value": {
+                      "mode": "gradient",
+                      "type": "gauge"
+                    }
                   },
                   {
                     "id": "color",
@@ -377,7 +396,9 @@ data:
           },
           "id": 3,
           "options": {
+            "cellHeight": "sm",
             "footer": {
+              "countRows": false,
               "fields": "",
               "reducer": [
                 "sum"
@@ -387,7 +408,7 @@ data:
             "showHeader": true,
             "sortBy": []
           },
-          "pluginVersion": "9.3.6",
+          "pluginVersion": "10.0.1",
           "targets": [
             {
               "datasource": {
@@ -395,7 +416,7 @@ data:
                 "uid": "P8E80F9AEF21F6940"
               },
               "editorMode": "code",
-              "expr": "topk(10, sum by (remote_addr) (count_over_time({app=\"ingress-nginx\"} | json | host = \"$host\" |  __error__=\"\" [$__interval])))",
+              "expr": "topk(10, sum by (remote_addr) (count_over_time({app=\"ingress-nginx\", glueops_job_name=\"nginx-with-host\", http_host = \"$host\"} | json |  __error__=\"\" [$__interval])))",
               "queryType": "range",
               "refId": "A"
             }
@@ -513,7 +534,7 @@ data:
                 "uid": "P8E80F9AEF21F6940"
               },
               "editorMode": "code",
-              "expr": "topk(10, sum by (status) (count_over_time({app=\"ingress-nginx\"} | json | host = \"$host\" |  __error__=\"\" [$__interval])))",
+              "expr": "topk(10, sum by (status) (count_over_time({app=\"ingress-nginx\", glueops_job_name=\"nginx-with-host\", http_host = \"$host\"} | json |  __error__=\"\" [$__interval])))",
               "legendFormat": "{{`{{status}}`}}",
               "queryType": "range",
               "refId": "A"
@@ -607,7 +628,7 @@ data:
                 "uid": "P8E80F9AEF21F6940"
               },
               "editorMode": "code",
-              "expr": "quantile_over_time(0.95,{app=\"ingress-nginx\"} | json | host = \"$host\" | unwrap request_time |  __error__=\"\"  [$__interval]) by (host)",
+              "expr": "quantile_over_time(0.95,{app=\"ingress-nginx\", glueops_job_name=\"nginx-with-host\", http_host = \"$host\"} | json | unwrap request_time |  __error__=\"\"  [$__interval]) by (http_host)",
               "legendFormat": "{{`{{status}}`}}",
               "queryType": "range",
               "refId": "A"
@@ -618,22 +639,24 @@ data:
           "type": "timeseries"
         }
       ],
-      "schemaVersion": 37,
+      "refresh": "",
+      "schemaVersion": 38,
       "style": "dark",
       "tags": [],
       "templating": {
         "list": [
           {
             "current": {
-              "selected": true,
-              "text": "grafana.test-16-np.venkata.glueopshosted.rocks",
-              "value": "grafana.test-16-np.venkata.glueopshosted.rocks"
+              "isNone": true,
+              "selected": false,
+              "text": "None",
+              "value": ""
             },
             "datasource": {
-              "type": "prometheus",
-              "uid": "prometheus"
+              "type": "loki",
+              "uid": "P8E80F9AEF21F6940"
             },
-            "definition": "label_values(kube_ingress_path, host)",
+            "definition": "",
             "hide": 0,
             "includeAll": false,
             "label": "",
@@ -641,11 +664,13 @@ data:
             "name": "host",
             "options": [],
             "query": {
-              "query": "label_values(kube_ingress_path, host)",
-              "refId": "StandardVariableQuery"
+              "label": "http_host",
+              "refId": "LokiVariableQueryEditor-VariableQuery",
+              "stream": "{app=\"ingress-nginx\", glueops_job_name=\"nginx-with-host\"}",
+              "type": 1
             },
-            "refresh": 1,
-            "regex": "",
+            "refresh": 2,
+            "regex": "\\b(?!-)(?:[a-zA-Z0-9-]{1,63}(?<!-)\\.)+[a-zA-Z]{2,63}\\b",
             "skipUrlSync": false,
             "sort": 0,
             "type": "query"
@@ -659,7 +684,7 @@ data:
       "timepicker": {},
       "timezone": "",
       "title": "Ingress by Host",
-      "uid": "FViU_A-4k",
-      "version": 3,
+      "uid": "FViU_A-4k2",
+      "version": 9,
       "weekStart": ""
     }
