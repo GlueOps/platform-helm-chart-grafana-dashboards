@@ -2056,8 +2056,7 @@ data:
     "schemaVersion": 38,
     "style": "dark",
     "tags": [
-        "VictoriaMetrics",
-        "PingStation"
+        "GlueOps"
     ],
     "templating": {
         "list": [
