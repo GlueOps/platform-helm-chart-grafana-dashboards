@@ -1,6 +1,28 @@
 apiVersion: v2
 name: glueops-grafana-dashboards
-description: A Helm chart for Grafana Dashboards for the GlueOps Platform. Given how Helm template works whenever you have a `{{var}}` in your grafana json you need to change it so that its excplitity escaped with a backtick. ORIGINAL- {{kubernetes_pod_name}} WORKING- ```{{`{{kubernetes_pod_name}}`}}```
+description: |
+  This is a Helm chart for deploying Grafana dashboards for the GlueOps Platform.
+  
+  ## Handling Variables in Helm Templates
+  
+  When using Helm templates with Grafana JSON configurations, you need to explicitly escape variables like `{{var}}` to work correctly with Helm's templating system.
+  
+  ### Example
+  
+  **Original (not working):**
+  
+  ```
+  {{kubernetes_pod_name}}
+  ```
+  
+  **Correct (working):**
+  
+  ```
+  {{`{{kubernetes_pod_name}}`}}
+  ```
+  
+  The backticks around the variable ensure that Helm interprets the template correctly without prematurely evaluating the variable.
+
 
 # A chart can be either an 'application' or a 'library' chart.
 #
