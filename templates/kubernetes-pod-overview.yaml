@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-dashboard-Kubernetes-pod-overview
+  name: grafana-dashboard-kubernetes-pod-overview
   labels:
     grafana_dashboard: "1"
 data:
