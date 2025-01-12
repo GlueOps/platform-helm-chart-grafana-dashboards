@@ -672,7 +672,7 @@ data:
                     {
                         "targetBlank": true,
                         "title": "Cpu Utilization ",
-                        "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__series.name}"
+                        "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__series.name}"
                     }
                     ],
                     "mappings": [],
@@ -799,7 +799,7 @@ data:
                     {
                         "targetBlank": true,
                         "title": "Memory Utilization",
-                        "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__series.name}"
+                        "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__series.name}"
                     }
                     ],
                     "mappings": [],
@@ -900,7 +900,7 @@ data:
                     {
                         "targetBlank": true,
                         "title": "Network Utilization",
-                        "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
+                        "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
                     }
                     ],
                     "mappings": [],
@@ -1002,7 +1002,7 @@ data:
                     {
                         "targetBlank": true,
                         "title": "Network Utilization",
-                        "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
+                        "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
                     }
                     ],
                     "mappings": [],
@@ -1361,7 +1361,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "CPU intensive",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -1439,7 +1439,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "memory",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -1546,7 +1546,7 @@ data:
                 "links": [
                 {
                     "title": "CPU Usage",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -1673,7 +1673,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Container Restarts",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -1871,7 +1871,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "CPU Throttle",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -1974,7 +1974,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Bandwith Utilization ",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -2077,7 +2077,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Memory Usage",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -2275,7 +2275,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Transmitted Bytes",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -2378,7 +2378,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Bytes Dropped",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -2479,7 +2479,7 @@ data:
                 "links": [
                 {
                     "title": "Bytes Dropped",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -2594,7 +2594,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Show Details",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All&from=${__from}&to=${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All&from=${__from}&to=${__to}"
                 }
                 ],
                 "mappings": [],
@@ -2696,7 +2696,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Show Details",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All&from=${__from}&to=${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All&from=${__from}&to=${__to}"
                 }
                 ],
                 "mappings": [],
@@ -2798,7 +2798,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Show Details",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All&from=${__from}&to=${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All&from=${__from}&to=${__to}"
                 }
                 ],
                 "mappings": [],
@@ -2940,7 +2940,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Show Details",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service}&var-route=All&from=${__from}&to=${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service}&var-route=All&from=${__from}&to=${__to}"
                 }
                 ],
                 "mappings": [],
@@ -3050,7 +3050,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Show Details",
-                    "url": "https://grafana.nonprod.gliese581d.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All&from=${__from}&to=${__to"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All&from=${__from}&to=${__to"
                 }
                 ],
                 "mappings": [],
