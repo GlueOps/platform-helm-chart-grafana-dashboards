@@ -120,7 +120,7 @@ data:
             "editorMode": "code",
             "expr": "sum(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}) by(service_name)",
             "instant": false,
-            "legendFormat": "{{label_name}}",
+            "legendFormat": "{{`{{label_name}}`}}",
             "range": true,
             "refId": "A"
           }
@@ -568,7 +568,7 @@ data:
             "editorMode": "code",
             "expr": "sum(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}) by(span_name)",
             "instant": false,
-            "legendFormat": "{{label_name}}",
+            "legendFormat": "{{`{{label_name}}`}}",
             "range": true,
             "refId": "A"
           }
@@ -640,7 +640,7 @@ data:
             "exemplar": false,
             "expr": "sort(avg(traces_spanmetrics_latency_sum{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}) by (http_target))",
             "instant": false,
-            "legendFormat": "{{http_target}}",
+            "legendFormat": "{{`{{http_target}}`}}",
             "range": true,
             "refId": "A"
           }
@@ -762,7 +762,7 @@ data:
             "editorMode": "code",
             "expr": "histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[5m])) by (le, span_name))",
             "instant": false,
-            "legendFormat": "{{span_name}}",
+            "legendFormat": "{{`{{span_name}}`}}",
             "range": true,
             "refId": "A"
           }
@@ -886,7 +886,7 @@ data:
             "expr": "sum(rate(traces_spanmetrics_calls_total{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}[3m])*60)  by(span_name)",
             "hide": false,
             "instant": false,
-            "legendFormat": "{{span_name}}",
+            "legendFormat": "{{`{{span_name}}`}}",
             "range": true,
             "refId": "B"
           }

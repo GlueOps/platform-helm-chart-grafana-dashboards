@@ -846,7 +846,7 @@ data:
                     "editorMode": "code",
                     "expr": "100 * (1 - ((avg_over_time(node_memory_MemFree_bytes[5m]) + avg_over_time(node_memory_Cached_bytes[5m]) + avg_over_time(node_memory_Buffers_bytes[5m])) / avg_over_time(node_memory_MemTotal_bytes[5m])))",
                     "instant": false,
-                    "legendFormat": "{{instance}}",
+                    "legendFormat": "{{`{{instance}}`}}",
                     "range": true,
                     "refId": "A"
                 }
@@ -948,7 +948,7 @@ data:
                     "editorMode": "code",
                     "expr": "irate(node_network_receive_bytes_total{}[$__rate_interval])*8",
                     "instant": false,
-                    "legendFormat": "recv {{device}}-{{instance}}",
+                    "legendFormat": "recv {{`{{device}}`}}-{{`{{instance}}`}}",
                     "range": true,
                     "refId": "A"
                 }
@@ -1050,7 +1050,7 @@ data:
                     "editorMode": "code",
                     "expr": "irate(node_network_transmit_bytes_total{}[$__rate_interval])*8",
                     "instant": false,
-                    "legendFormat": "{{device}}-{{instance}}",
+                    "legendFormat": "{{`{{device}}`}}-{{`{{instance}}`}}",
                     "range": true,
                     "refId": "A"
                 }
@@ -1920,7 +1920,7 @@ data:
                 "editorMode": "code",
                 "expr": "sum(\n    container_cpu_cfs_throttled_periods_total{namespace=\"$namespace\",container!=''}\n  * on(pod)\n    group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}\n) by (label_app_kubernetes_io_name)\n",
                 "instant": false,
-                "legendFormat": "{{label_app_kubernetes_io_name}}",
+                "legendFormat": "{{`{{label_app_kubernetes_io_name}}`}}",
                 "range": true,
                 "refId": "A"
             }
@@ -2126,7 +2126,7 @@ data:
                 "editorMode": "code",
                 "expr": "sum(\n    container_memory_working_set_bytes{namespace=\"$namespace\",container!=''}\n  * on(pod)\n    group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}\n) by (label_app_kubernetes_io_name)",
                 "instant": false,
-                "legendFormat": "{{label_app_kubernetes_io_name}}",
+                "legendFormat": "{{`{{label_app_kubernetes_io_name}}`}}",
                 "range": true,
                 "refId": "A"
             }
@@ -2996,7 +2996,7 @@ data:
                 "editorMode": "code",
                 "expr": "sort(sum(traces_spanmetrics_latency_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"} / traces_spanmetrics_latency_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"}) by (service))",
                 "instant": false,
-                "legendFormat": "{{service}}",
+                "legendFormat": "{{`{{service}}`}}",
                 "range": true,
                 "refId": "A"
             }
@@ -3123,7 +3123,7 @@ data:
                 "editorMode": "code",
                 "expr": "sum(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}) by(service_name,http_status_code)",
                 "instant": false,
-                "legendFormat": "[{{http_status_code}}] {{service_name}}",
+                "legendFormat": "[{{`{{http_status_code}}`}}] {{`{{service_name}}`}}",
                 "range": true,
                 "refId": "A"
             }
