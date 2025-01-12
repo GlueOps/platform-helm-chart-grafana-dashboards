@@ -6,7 +6,7 @@ metadata:
     grafana_dashboard: "1"
 data:
   #https://grafana.com/grafana/dashboards/14584-argocd/
-  glueops-Kubernetes-overview.json: |
+  glueops-kubernetes-overview.json: |
     {
         "annotations": {
         "list": [
