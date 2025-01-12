@@ -24,3 +24,8 @@ When using Helm templates with Grafana JSON configurations, you need to explicit
 
 The backticks around the variable ensure that Helm interprets the template correctly without prematurely evaluating the variable.
 
+## Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| captain_domain | string | `"nonprod.gliese667cc.onglueops.rocks"` |  |
