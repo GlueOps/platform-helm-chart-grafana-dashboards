@@ -1546,7 +1546,7 @@ data:
                 "links": [
                 {
                     "title": "CPU Usage",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -1871,7 +1871,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "CPU Throttle",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -1974,7 +1974,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Bandwith Utilization ",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -2275,7 +2275,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Transmitted Bytes",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}"
                 }
                 ],
                 "mappings": [],
@@ -2378,7 +2378,7 @@ data:
                 {
                     "targetBlank": true,
                     "title": "Bytes Dropped",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
@@ -2479,7 +2479,7 @@ data:
                 "links": [
                 {
                     "title": "Bytes Dropped",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce656e7gtgirkb/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-pod=﻿${__field.labels.pod}﻿&from=﻿${__from}﻿&to=﻿${__to}"
                 }
                 ],
                 "mappings": [],
