@@ -36,7 +36,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fe7n3aybbow74c"
+            "uid": "prometheus"
           },
           "description": "",
           "fieldConfig": {
@@ -115,7 +115,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "fe7n3aybbow74c"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "expr": "sum(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}) by(service_name)",
@@ -579,7 +579,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fe7n3aybbow74c"
+            "uid": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -634,7 +634,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "fe7n3aybbow74c"
+                "uid": "prometheus"
               },
               "editorMode": "code",
               "exemplar": false,
