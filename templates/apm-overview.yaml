@@ -1185,10 +1185,7 @@ data:
           }
         ]
       },
-      "time": {
-        "from": "2024-12-23T14:14:45.945Z",
-        "to": "2024-12-23T14:29:45.945Z"
-      },
+      "time": {},
       "timepicker": {},
       "timezone": "",
       "title": "APM Overview",
