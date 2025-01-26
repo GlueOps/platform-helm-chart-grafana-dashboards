@@ -1185,7 +1185,10 @@ data:
           }
         ]
       },
-      "time": {},
+      "time": {
+        "from": "now-5m",
+        "to": "now"
+      },
       "timepicker": {},
       "timezone": "",
       "title": "APM Overview",

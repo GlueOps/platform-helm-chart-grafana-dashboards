@@ -3341,7 +3341,7 @@ data:
         ]
         },
         "time": {
-        "from": "now-2d",
+        "from": "now-5m",
         "to": "now"
         },
         "timepicker": {},
