@@ -760,7 +760,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "code",
-              "expr": "histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[5m])) by (le, span_name))",
+              "expr": "histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{span_kind=\"SPAN_KIND_SERVER\",service_name=\"$app\"}[5m])) by (le, span_name))",
               "instant": false,
               "legendFormat": "{{`{{span_name}}`}}",
               "range": true,
