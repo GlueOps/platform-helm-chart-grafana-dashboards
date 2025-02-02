@@ -1617,7 +1617,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(\n    node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\",container!=''}\n  * on(pod)\n    group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}\n) by (label_app_kubernetes_io_name)",
+                "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -1719,7 +1719,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(\n    kube_pod_container_status_restarts_total{namespace=\"$namespace\",container!=''}\n  * on(pod)\n    group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}\n) by (label_app_kubernetes_io_name) > 0",
+                "expr": "sum(kube_pod_container_status_restarts_total{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -1815,7 +1815,7 @@ data:
                 },
                 "editorMode": "code",
                 "exemplar": false,
-                "expr": "sum(\n    kube_pod_container_status_waiting{namespace=\"$namespace\",container!=''}\n  * on(pod)\n    group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}\n) by (label_app_kubernetes_io_name) > 0",
+                "expr": "sum(kube_pod_container_status_waiting{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -1918,7 +1918,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(\n    container_cpu_cfs_throttled_periods_total{namespace=\"$namespace\",container!=''}\n  * on(pod)\n    group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}\n) by (label_app_kubernetes_io_name)\n",
+                "expr": "sum(container_cpu_cfs_throttled_periods_total{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "{{`{{label_app_kubernetes_io_name}}`}}",
                 "range": true,
@@ -2021,7 +2021,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\"}[$__rate_interval])* on(pod) group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''})   by (label_app_kubernetes_io_name)",
+                "expr": "sum(irate(container_network_receive_bytes_total{job="kubelet", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\"}[$__rate_interval])* on(pod) group_left(label_app_kubernetes_io_name)max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}))   by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -2124,7 +2124,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(\n    container_memory_working_set_bytes{namespace=\"$namespace\",container!=''}\n  * on(pod)\n    group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}\n) by (label_app_kubernetes_io_name)",
+                "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "{{`{{label_app_kubernetes_io_name}}`}}",
                 "range": true,
@@ -2219,7 +2219,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(\n    kube_pod_container_status_last_terminated_reason{namespace=\"$namespace\",container!=''}\n  * on(pod)\n    group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}\n) by (label_app_kubernetes_io_name)",
+                "expr": "sum(kube_pod_container_status_last_terminated_reason{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -2322,7 +2322,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(rate(container_network_transmit_bytes_total{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\"}[$__rate_interval])* on(pod)  group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
+                "expr": "sum(irate(container_network_transmit_bytes_total{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\"}[$__rate_interval])* on(pod) group_left(label_app_kubernetes_io_name)max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}))   by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -2424,7 +2424,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(rate(container_network_receive_packets_dropped_total{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\"}[$__rate_interval])* on(pod)\n    group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
+                "expr": "sum(irate(container_network_receive_packets_dropped_total{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\"}[$__rate_interval])* on(pod) group_left(label_app_kubernetes_io_name)max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}))   by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -2525,7 +2525,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(rate(container_network_transmit_packets_dropped_total{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\"}[$__rate_interval])* on(pod)\n    group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
+                "expr": "sum(irate(container_network_transmit_packets_dropped_total{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\"}[$__rate_interval])* on(pod) group_left(label_app_kubernetes_io_name)max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}))   by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
