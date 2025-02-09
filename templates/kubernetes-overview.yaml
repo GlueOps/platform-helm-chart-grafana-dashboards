@@ -2021,7 +2021,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(irate(container_network_receive_bytes_total{job="kubelet", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\"}[$__rate_interval])* on(pod) group_left(label_app_kubernetes_io_name)max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}))   by (label_app_kubernetes_io_name)",
+                "expr": "sum(irate(container_network_receive_bytes_total{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\"}[$__rate_interval])* on(pod) group_left(label_app_kubernetes_io_name)max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}))   by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
