@@ -119,7 +119,7 @@ data:
               "editorMode": "code",
               "expr": "sum(rate(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[5m])) by(service_name)",
               "instant": false,
-              "legendFormat": "{{label_name}}",
+              "legendFormat": "{{`{{label_name}}`}}",
               "range": true,
               "refId": "A"
             }
@@ -567,7 +567,7 @@ data:
               "editorMode": "code",
               "expr": "sum(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}) by(span_name)",
               "instant": false,
-              "legendFormat": "{{label_name}}",
+              "legendFormat": "{{`{{label_name}}`}}",
               "range": true,
               "refId": "A"
             }
