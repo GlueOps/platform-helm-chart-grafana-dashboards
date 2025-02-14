@@ -7,7 +7,7 @@ metadata:
 data:
   #https://grafana.com/grafana/dashboards/14584-argocd/
   glueops-apm-overview.json: |
-      {
+    {
       "annotations": {
         "list": [
           {
@@ -1194,4 +1194,4 @@ data:
       "uid": "opentelemetry-apm",
       "version": 2,
       "weekStart": ""
-      }
+    }
