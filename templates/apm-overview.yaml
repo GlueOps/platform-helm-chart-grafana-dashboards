@@ -1185,7 +1185,7 @@ data:
         ]
       },
       "time": {
-        "from": "now-1$__interval",
+        "from": "now-15m",
         "to": "now"
       },
       "timepicker": {},
