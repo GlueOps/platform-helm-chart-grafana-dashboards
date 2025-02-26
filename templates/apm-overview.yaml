@@ -576,76 +576,76 @@ data:
           "type": "piechart"
         },
         {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 6,
+        "y": 6
+      },
+      "id": 11,
+      "options": {
+        "displayMode": "lcd",
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "10.4.8",
+      "targets": [
+        {
           "datasource": {
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "s"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 7,
-            "x": 6,
-            "y": 6
-          },
-          "id": 11,
-          "options": {
-            "displayMode": "lcd",
-            "maxVizHeight": 300,
-            "minVizHeight": 16,
-            "minVizWidth": 8,
-            "namePlacement": "auto",
-            "orientation": "horizontal",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showUnfilled": true,
-            "sizing": "auto",
-            "valueMode": "color"
-          },
-          "pluginVersion": "10.4.8",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "avg(traces_spanmetrics_latency_sum{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}/traces_spanmetrics_latency_count{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}) by (http_target)",
-              "instant": false,
-              "legendFormat": "{{`{{http_target}}`}}",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Average latency",
-          "type": "bargauge"
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "avg(traces_spanmetrics_latency_sum{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}/traces_spanmetrics_latency_count{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}) by (http_target)",
+          "instant": false,
+          "legendFormat": "{{`{{http_target}}`}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Average latency",
+      "type": "bargauge"
         },
         {
           "datasource": {
