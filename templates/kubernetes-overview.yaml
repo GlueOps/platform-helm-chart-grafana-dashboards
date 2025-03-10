@@ -2642,14 +2642,14 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}) by(service_name)",
+                "expr": "sum(rate(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[$__interval])) by(service_name)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
                 "refId": "A"
             }
             ],
-            "title": "Requests",
+            "title": "Requests By Service",
             "type": "timeseries"
         },
         {
@@ -2817,7 +2817,7 @@ data:
                     }
                 ]
                 },
-                "unit": "ms"
+                "unit": "s"
             },
             "overrides": []
             },
@@ -2847,7 +2847,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "topK(5,histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{span_kind=\"SPAN_KIND_SERVER\"}[3m])) by (le, service_name)))",
+                "expr": "topK(5,histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{span_kind=\"SPAN_KIND_SERVER\"}[$__interval])) by (le, service_name)))",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -3123,7 +3123,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}) by(service_name,http_status_code)",
+                "expr": "sum(rate(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[$__interval]))  by(http_status_code)",
                 "instant": false,
                 "legendFormat": "[{{`{{http_status_code}}`}}] {{`{{service_name}}`}}",
                 "range": true,
