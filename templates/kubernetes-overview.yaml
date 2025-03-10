@@ -2918,7 +2918,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sort_desc(topK(10,sum(traces_spanmetrics_calls_total{ span_kind=\"SPAN_KIND_SERVER\"}) by(net_peer_ip)))",
+                "expr": "sort_desc(topK(10,sum(traces_spanmetrics_calls_total{peer_ipv4!=''}) by(peer_ipv4)))",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
