@@ -652,7 +652,7 @@ data:
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "description": "PR95 latency over last 3 minutes",
+          "description": "P95 latency over last 3 minutes",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -704,7 +704,7 @@ data:
                   }
                 ]
               },
-              "unit": "ms"
+              "unit": "s"
             },
             "overrides": [
               {
