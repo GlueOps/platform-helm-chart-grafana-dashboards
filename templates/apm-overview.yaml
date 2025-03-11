@@ -766,7 +766,7 @@ data:
               "refId": "A"
             }
           ],
-          "title": "PR95 Latency",
+          "title": "P95 Latency",
           "type": "timeseries"
         },
         {

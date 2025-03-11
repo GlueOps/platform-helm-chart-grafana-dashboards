@@ -2871,7 +2871,12 @@ data:
                 "mappings": [],
                 "thresholds": {
                 "mode": "absolute",
-                "steps": []
+                "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    }
+                ]
                 }
             },
             "overrides": []
