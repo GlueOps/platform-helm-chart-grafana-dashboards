@@ -2871,16 +2871,7 @@ data:
                 "mappings": [],
                 "thresholds": {
                 "mode": "absolute",
-                "steps": [
-                    {
-                    "color": "green",
-                    "value": null
-                    },
-                    {
-                    "color": "red",
-                    "value": 80
-                    }
-                ]
+                "steps": []
                 }
             },
             "overrides": []
