@@ -2914,7 +2914,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sort_desc(topK(10,sum(traces_spanmetrics_calls_total{peer_ipv4!=''}) by(peer_ipv4)))",
+                "expr": "sort_desc(topK(10,sum(traces_spanmetrics_calls_total{net_peer_ip!='',span_kind=\"SPAN_KIND_SERVER\",service_name=\"nginx-proxy\"}) by(net_peer_ip)))",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -3119,7 +3119,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(rate(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[$__interval]))  by(http_status_code)",
+                "expr": "sum by (http_status_code, service_name) ( rate(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[5m]) ) * 60",
                 "instant": false,
                 "legendFormat": "[{{`{{http_status_code}}`}}] {{`{{service_name}}`}}",
                 "range": true,
