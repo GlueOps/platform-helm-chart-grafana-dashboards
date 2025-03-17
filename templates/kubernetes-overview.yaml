@@ -1919,7 +1919,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(container_cpu_cfs_throttled_periods_total{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
+                "expr": "avg(container_cpu_cfs_throttled_periods_total{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
                 "instant": false,
                 "legendFormat": "{{`{{label_app_kubernetes_io_name}}`}}",
                 "range": true,
