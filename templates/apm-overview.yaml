@@ -332,7 +332,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "sum(rate(traces_spanmetrics_calls_total{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\", http_status_code=~\"^5.*\"}[5m]*60)) by(http_status_code)",
+              "expr": "sum(rate(traces_spanmetrics_calls_total{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\", http_status_code=~\"^5.*\"}[5m])*60) by(http_status_code)",
               "format": "time_series",
               "hide": false,
               "instant": false,

@@ -2642,7 +2642,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sum(rate(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[$__interval])) by(service_name)",
+                "expr": "sum(rate(traces_spanmetrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[5m])*60) by(service_name)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -2847,7 +2847,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "topK(5,histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{span_kind=\"SPAN_KIND_SERVER\"}[$__interval])) by (le, service_name)))",
+                "expr": "topK(5,histogram_quantile(0.95, sum(rate(traces_spanmetrics_latency_bucket{span_kind=\"SPAN_KIND_SERVER\"}[5m])*60) by (le, service_name)))",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
