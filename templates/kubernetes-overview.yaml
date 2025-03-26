@@ -1377,7 +1377,8 @@ data:
                     "value": 80
                     }
                 ]
-                }
+                },
+                "unit": "cpu_time"
             },
             "overrides": []
             },
@@ -2877,7 +2878,8 @@ data:
                         "value": null
                     }
                 ]
-                }
+                },
+                "unit": "locale"
             },
             "overrides": []
             },
@@ -2921,7 +2923,7 @@ data:
                 "refId": "A"
             }
             ],
-            "title": "Top 10 IPS",
+            "title": "Requests from TOP 10 IPs",
             "type": "bargauge"
         },
         {
