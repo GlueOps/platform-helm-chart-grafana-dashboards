@@ -1378,7 +1378,7 @@ data:
                     }
                 ]
                 },
-                "unit": "cpu_time"
+                "unit": "none"
             },
             "overrides": []
             },
@@ -1532,7 +1532,21 @@ data:
                 },
                 "unit": "bytes"
             },
-            "overrides": []
+            
+            "overrides": [
+            {
+                "matcher": {
+                "id": "byRegexp",
+                "options": "/%/"
+                },
+                "properties": [
+                {
+                    "id": "unit",
+                    "value": "percent"
+                }
+                ]
+            }
+            ]
             },
             "gridPos": {
             "h": 8,
@@ -1563,20 +1577,146 @@ data:
             "targets": [
             {
                 "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
+                    "type": "prometheus",
+                    "uid": "prometheus"
                 },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sort_desc(topk(10,sum(\n    container_memory_working_set_bytes{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\", container!=\"\", image!=\"\"}\n  * on(namespace,pod)\n   group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}\n) by (label_app_kubernetes_io_name)))",
+                "expr": "sum(container_memory_working_set_bytes{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\", container!=\"\", image!=\"\"}* on(namespace,pod)group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
+                "format": "table",
                 "instant": true,
-                "legendFormat": "__auto",
-                "range": false,
-                "refId": "A"
-            }
+                "refId": "A",
+                "hide": false,
+                "editorMode": "code"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "prometheus"
+                },
+                "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{ namespace=\"$namespace\"}* on(namespace,pod)group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
+                "format": "table",
+                "instant": true,
+                "refId": "B",
+                "hide": false,
+                "editorMode": "code"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "prometheus"
+                },
+                "expr": "(sum(container_memory_working_set_bytes{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\", container!=\"\", image!=\"\"}* on(namespace,pod) group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)/sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{ namespace=\"$namespace\"}* on(namespace,pod)group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name))*100",
+                "format": "table",
+                "instant": true,
+                "refId": "C",
+                "hide": false,
+                "editorMode": "code"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "prometheus"
+                },
+                "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{ namespace=\"$namespace\"}* on(namespace,pod) group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
+                "format": "table",
+                "instant": true,
+                "refId": "D",
+                "hide": false,
+                "editorMode": "code"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "prometheus"
+                },
+                "expr": "(sum(container_memory_working_set_bytes{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\", container!=\"\", image!=\"\"}* on(namespace,pod) group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)/sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{ namespace=\"$namespace\"}* on(namespace,pod)group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name))*100",
+                "format": "table",
+                "instant": true,
+                "refId": "E",
+                "hide": false,
+                "editorMode": "code"
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "prometheus"
+                },
+                "expr": "sum(container_memory_rss{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\", container!=\"\", image!=\"\"}* on(namespace,pod)group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
+                "format": "table",
+                "instant": true,
+                "refId": "F",
+                "hide": true
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "prometheus"
+                },
+                "expr": "sum(container_memory_cache{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"$namespace\", container!=\"\", image!=\"\"}* on(namespace,pod)group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
+                "format": "table",
+                "instant": true,
+                "refId": "G",
+                "hide": true
+                },
+                {
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "prometheus"
+                },
+                "expr": "sum(container_memory_swap{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\"}* on(namespace,pod)group_left(label_app_kubernetes_io_name) kube_pod_labels{ label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
+                "format": "table",
+                "instant": true,
+                "refId": "H",
+                "editorMode": "code",
+                "hide": true
+                }
             ],
             "title": "Memory Intensive Apps",
-            "type": "bargauge"
+            "type": "table",
+            "transformations": [
+                {
+                "id": "joinByField",
+                "options": {
+                    "byField": "label_app_kubernetes_io_name",
+                    "mode": "outer"
+                }
+                },
+                {
+                "id": "organize",
+                "options": {
+                    "excludeByName": {
+                    "Time 1": true,
+                    "Time 2": true,
+                    "Time 3": true,
+                    "Time 4": true,
+                    "Time": true
+                    },
+                    "indexByName": {
+                    "label_app_kubernetes_io_name": 0,
+                    "Time 1": 1,
+                    "Time 2": 2,
+                    "Time 3": 3,
+                    "Time 4": 4,
+                    "Time 5": 5,
+                    "Value #A": 6,
+                    "Value #B": 7,
+                    "Value #C": 8,
+                    "Value #D": 9,
+                    "Value #E": 10
+                    },
+                    "renameByName": {
+                    "Value #A": "Memory Usage",
+                    "label_app_kubernetes_io_name": "App",
+                    "Time 2": "",
+                    "Value #B": "Memory Request",
+                    "Value #C": "Memory Requests %",
+                    "Value #D": "Memory Limits",
+                    "Value #E": "Memory Limits %",
+                    "Time 5": ""
+                    },
+                    "includeByName": {}
+                }
+                }
+            ],
         },
         {
             "datasource": {
