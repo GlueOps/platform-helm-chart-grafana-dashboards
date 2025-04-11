@@ -1410,11 +1410,11 @@ data:
             "pluginVersion": "10.4.8",
             "targets": [
                 {
-                  "datasource": {
-                     "type": "prometheus",
-                     "uid": "${datasource}"
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "prometheus"
                 },
-                "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{cluster=\"$cluster\", namespace=\"$namespace\", pod=\"$pod\", container!=\"\"}) by (container)",
+                "expr": "sum( node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\"}* on(namespace,pod) group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
                 "format": "table",
                 "instant": true,
                 "refId": "A",
@@ -1424,9 +1424,9 @@ data:
                 {
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "${datasource}"
+                    "uid": "prometheus"
                 },
-                "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{cluster=\"$cluster\", namespace=\"$namespace\", pod=\"$pod\", container!=\"\"}) by (container)",
+                "expr": "sum( cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\"} * on(namespace,pod) group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
                 "format": "table",
                 "instant": true,
                 "refId": "B",
@@ -1435,9 +1435,9 @@ data:
                 {
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "${datasource}"
+                    "uid": "prometheus"
                 },
-                "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{cluster=\"$cluster\", namespace=\"$namespace\", pod=\"$pod\", container!=\"\"}) by (container) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{cluster=\"$cluster\", namespace=\"$namespace\", pod=\"$pod\", container!=\"\"}) by (container)",
+                "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\"}* on(namespace,pod) group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)/sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\"} * on(namespace,pod) group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
                 "format": "table",
                 "instant": true,
                 "refId": "C"
@@ -1445,9 +1445,9 @@ data:
                 {
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "${datasource}"
+                    "uid": "prometheus"
                 },
-                "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{cluster=\"$cluster\", namespace=\"$namespace\", pod=\"$pod\", container!=\"\"}) by (container)",
+                "expr": "sum( cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\"} * on(namespace,pod) group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
                 "format": "table",
                 "instant": true,
                 "refId": "D"
@@ -1455,9 +1455,9 @@ data:
                 {
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "${datasource}"
+                    "uid": "prometheus"
                 },
-                "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{cluster=\"$cluster\", namespace=\"$namespace\", pod=\"$pod\", container!=\"\"}) by (container) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{cluster=\"$cluster\", namespace=\"$namespace\", pod=\"$pod\", container!=\"\"}) by (container)",
+                "expr": "sum( node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\"}* on(namespace,pod)group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)/sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\"}* on(namespace,pod) group_left(label_app_kubernetes_io_name) kube_pod_labels{namespace=\"$namespace\" ,label_app_kubernetes_io_name!=''}) by (label_app_kubernetes_io_name)",
                 "format": "table",
                 "instant": true,
                 "refId": "E",
