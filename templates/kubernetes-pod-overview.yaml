@@ -72,6 +72,13 @@ data:
                 "mode": "off"
               }
             },
+            "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "mappings": [],
             "thresholds": {
               "mode": "absolute",
@@ -357,6 +364,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+            "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "custom": {
               "align": "auto",
               "cellOptions": {
@@ -522,6 +536,13 @@ data:
             "color": {
               "mode": "palette-classic"
             },
+            "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "custom": {
               "axisBorderShow": false,
               "axisCenteredZero": false,
@@ -684,6 +705,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+            "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "custom": {
               "align": "auto",
               "cellOptions": {
@@ -889,6 +917,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+            "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "color": {
               "mode": "palette-classic"
             },
@@ -985,6 +1020,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+           "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "color": {
               "mode": "palette-classic"
             },
@@ -1081,6 +1123,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+           "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "color": {
               "mode": "palette-classic"
             },
@@ -1177,6 +1226,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+            "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "color": {
               "mode": "palette-classic"
             },
@@ -1273,6 +1329,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+          "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "color": {
               "mode": "palette-classic"
             },
@@ -1369,6 +1432,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+            "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "color": {
               "mode": "palette-classic"
             },
@@ -1465,6 +1535,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+           "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "color": {
               "mode": "palette-classic"
             },
@@ -1572,6 +1649,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+            "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "color": {
               "mode": "palette-classic"
             },
@@ -1679,6 +1763,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+           "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "color": {
               "mode": "palette-classic"
             },
@@ -1777,6 +1868,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+            "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "color": {
               "mode": "palette-classic"
             },
@@ -1875,6 +1973,13 @@ data:
         },
         "fieldConfig": {
           "defaults": {
+            "links": [
+              {
+                "targetBlank": true,
+                "title": "Logs",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/a/grafana-lokiexplore-app/explore?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&timezone=browser&var-fields=&var-levels=&var-metadata=&var-all-fields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&var-primary_label=service_name|=~|.+&var-filters_replica=container|=|${__field.labels.container}"
+              }
+            ],
             "custom": {
               "align": "auto",
               "cellOptions": {
