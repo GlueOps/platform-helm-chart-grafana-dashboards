@@ -3133,7 +3133,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sort_desc(topK(10,sum(traces_spanmetrics_calls_total{net_peer_ip!='',span_kind=\"SPAN_KIND_SERVER\",service_name=\"nginx-proxy\"}) by(net_peer_ip)))",
+                "expr": "sort_desc(topK(10,sum(span_metrics_calls_total{net_peer_ip!='',span_kind=\"SPAN_KIND_SERVER\",service_name=\"nginx-proxy\"}) by(net_peer_ip)))",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,
@@ -3211,7 +3211,7 @@ data:
                 "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "sort(sum(span_metrics_duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"} / span_metrics_duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"}) by (service))",
+                "expr": "sort(sum(span_metrics_duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"} / span_metrics_duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"}) by (service_name))",
                 "instant": false,
                 "legendFormat": "{{`{{service}}`}}",
                 "range": true,
