@@ -599,7 +599,7 @@ data:
               }
             ]
           },
-          "unit": "s"
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -637,7 +637,7 @@ data:
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "avg(span_metrics_duration_milliseconds_bucket{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}/traces_spanmetrics_latency_count{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}) by (http_target)",
+          "expr": "avg(span_metrics_duration_milliseconds_sum{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}/span_metrics_duration_milliseconds_count{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}) by (http_target)",
           "instant": false,
           "legendFormat": "{{`{{http_target}}`}}",
           "range": true,
@@ -704,7 +704,7 @@ data:
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "ms"
             },
             "overrides": [
               {
