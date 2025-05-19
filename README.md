@@ -1,6 +1,6 @@
 # glueops-grafana-dashboards
 
-![Version: 0.13.2-rc53](https://img.shields.io/badge/Version-0.13.2--rc53-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.13.2-rc54](https://img.shields.io/badge/Version-0.13.2--rc54-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
 This is a Helm chart for deploying Grafana dashboards for the GlueOps Platform.
 
