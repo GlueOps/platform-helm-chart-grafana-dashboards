@@ -2550,9 +2550,9 @@ data:
       },
       "timepicker": {},
       "timezone": "utc",
-      "title": "Loki / Operational",
+      "title": "Loki Overview",
       "uid": "operational",
-      "version": 2,
+      "version": 3,
       "weekStart": ""
     }
     
