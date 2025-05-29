@@ -6,7 +6,7 @@ metadata:
     grafana_dashboard: "1"
 data:
   #https://grafana.com/grafana/dashboards/14584-argocd/
-  grafana-dashboard-loki-operational: |
+  grafana-dashboard-loki-operational.json: |
     {
       "annotations": {
         "list": [
