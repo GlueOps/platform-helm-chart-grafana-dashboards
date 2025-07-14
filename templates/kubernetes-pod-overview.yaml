@@ -4,6 +4,7 @@ metadata:
   name: grafana-dashboard-kubernetes-pod-overview
   labels:
     grafana_dev_dashboard: "1"
+    grafana_cluster_administrator_dashboard: "1"
 data:
   #https://grafana.com/grafana/dashboards/14584-argocd/
   glueops-kubernetes-pod-overview.json: |

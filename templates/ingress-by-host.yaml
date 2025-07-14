@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: grafana-dashboard-ingress-by-host
   labels:
-    grafana_dashboard: "1"
+    grafana_cluster_administrator_dashboard: "1"
 data:
 #https://grafana.com/grafana/dashboards/12559-grafana-loki-dashboard-for-nginx-service-mesh/
 #https://grafana.com/grafana/dashboards/13865-fgc-nginx01-web-analytics/

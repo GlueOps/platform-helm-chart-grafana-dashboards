@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: grafana-dashboard-network-exporter
   labels:
-    grafana_dashboard: "1"
+    grafana_cluster_administrator_dashboard: "1"
 data:
   glueops-network-exporter.json: |
     {

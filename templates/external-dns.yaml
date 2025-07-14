@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: grafana-dashboard-external-dns
   labels:
-    grafana_dashboard: "1"
+    grafana_cluster_administrator_dashboard: "1"
 data:
 #https://grafana.com/grafana/dashboards/15038-external-dns/
   glueops-external-dns.json: |
