@@ -673,7 +673,7 @@ data:
                     {
                     "targetBlank": true,
                     "title": "Cpu Utilization ",
-                    "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__series.name}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__series.name}"
                     }
                 ],
                 "mappings": [],
@@ -800,7 +800,7 @@ data:
                     {
                     "targetBlank": true,
                     "title": "Memory Utilization",
-                    "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__series.name}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__series.name}"
                     }
                 ],
                 "mappings": [],
@@ -901,7 +901,7 @@ data:
                     {
                     "targetBlank": true,
                     "title": "Network Utilization",
-                    "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
                     }
                 ],
                 "mappings": [],
@@ -1003,7 +1003,7 @@ data:
                     {
                     "targetBlank": true,
                     "title": "Network Utilization",
-                    "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
                     }
                 ],
                 "mappings": [],
@@ -1399,7 +1399,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "CPU Usage",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -1602,7 +1602,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "CPU intensive",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
                 }
             ],
             "mappings": [],
@@ -1813,7 +1813,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "memory",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
                 }
             ],
             "mappings": [],
@@ -2070,7 +2070,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "CPU Throttle",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2175,7 +2175,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Memory Usage",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2377,7 +2377,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Bandwith Utilization ",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2482,7 +2482,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Container Restarts",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2586,7 +2586,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Bytes Dropped",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2690,7 +2690,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Transmitted Bytes",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2795,7 +2795,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Bytes Dropped",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2912,7 +2912,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Show Details",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
                 }
             ],
             "mappings": [],
@@ -3016,7 +3016,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Show Details",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
                 }
             ],
             "mappings": [],
@@ -3120,7 +3120,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Show Details",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
                 }
             ],
             "mappings": [],
@@ -3266,7 +3266,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Show Details",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service}&var-route=All"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service}&var-route=All"
                 }
             ],
             "mappings": [],
@@ -3382,7 +3382,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Show Details",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
+                "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
                 }
             ],
             "mappings": [],
