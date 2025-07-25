@@ -119,7 +119,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "code",
-              "expr": "sum by (service_name) ( rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[5m]) ) * 60",
+              "expr": "round(avg_over_time((sum by (service_name) (rate(span_metrics_calls_total{span_kind="SPAN_KIND_SERVER", service_name=\"$app\"}[5m])) * 60)[15m:1m]),1)",
               "instant": false,
               "legendFormat": "{{`{{label_name}}`}}",
               "range": true,
@@ -230,7 +230,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "sum(rate(span_metrics_calls_total{service_name=\"$app\", http_status_code=~\"^2.*\"}[5m])*60)  by(http_status_code)",
+              "expr": "round(avg_over_time((sum by (http_status_code) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\",http_status_code=~\"^2.*\"}[5m])) * 60)[15m:1m]),1)",
               "format": "time_series",
               "instant": false,
               "legendFormat": "Http Status 2XX",
@@ -244,7 +244,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "sum(rate(span_metrics_calls_total{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\", http_status_code=~\"^3.*\"}[5m])*60) by(http_status_code)",
+              "expr": "round(avg_over_time((sum by (http_status_code) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\",http_status_code=~\"^3.*\"}[5m])) * 60)[15m:1m]),1)",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -259,7 +259,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "sum(rate(span_metrics_calls_total{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\", http_status_code=~\"^4.*\"}[5m])*60) by(http_status_code)",
+              "expr": "round(avg_over_time((sum by (http_status_code) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\",http_status_code=~\"^4.*\"}[5m])) * 60)[15m:1m]),1)",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -274,73 +274,13 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "sum(rate(span_metrics_calls_total{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\", http_status_code=~\"^5.*\"}[5m])*60) by(http_status_code)",
+              "expr": "round(avg_over_time((sum by (http_status_code) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\",http_status_code=~\"^5.*\"}[5m])) * 60)[15m:1m]),1)",
               "format": "time_series",
               "hide": false,
               "instant": false,
               "legendFormat": "Http Status 5XX",
               "range": true,
               "refId": "5XX"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "sum(rate(span_metrics_calls_total{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\", http_status_code=~\"^2.*\"}[5m])*60) by(http_status_code)",
-              "format": "time_series",
-              "hide": false,
-              "instant": true,
-              "legendFormat": "Http Status 2XX",
-              "range": false,
-              "refId": "2XX-instant"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "sum(rate(span_metrics_calls_total{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\", http_status_code=~\"^3.*\"}[5m])*60) by(http_status_code)",
-              "format": "time_series",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "Http Status 3XX",
-              "range": true,
-              "refId": "3XX-instant"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "sum(rate(span_metrics_calls_total{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\", http_status_code=~\"^4.*\"}[5m])*60) by(http_status_code)",
-              "format": "time_series",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "Http Status 4XX",
-              "range": true,
-              "refId": "4XX-instant"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "sum(rate(span_metrics_calls_total{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\", http_status_code=~\"^5.*\"}[5m])*60) by(http_status_code)",
-              "format": "time_series",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "Http Status 5XX",
-              "range": true,
-              "refId": "5XX-instant"
             }
           ],
           "title": "Requests Count by Status Code per Second",
@@ -761,7 +701,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "code",
-              "expr": "histogram_quantile(0.95, sum(rate(span_metrics_duration_milliseconds_bucket{span_kind=\"SPAN_KIND_SERVER\",service_name=\"$app\"}[$__interval])) by (le, span_name))",
+              "expr": "round(avg_over_time(histogram_quantile(0.95,sum by (le, span_name) (rate(span_metrics_duration_milliseconds_bucket{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[10m])))[15m:1m]), 0.1)",
               "instant": false,
               "legendFormat": "{{`{{span_name}}`}}",
               "range": true,
@@ -884,7 +824,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "code",
-              "expr": "sum(rate(span_metrics_calls_total{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}[5m])*60)  by(span_name)",
+              "expr": "round(avg_over_time((sum by (span_name) (rate(span_metrics_calls_total{span_kind="SPAN_KIND_SERVER", service_name="$app"}[5m])) * 60)[15m:1m]),1)",
               "hide": false,
               "instant": false,
               "legendFormat": "{{`{{span_name}}`}}",
