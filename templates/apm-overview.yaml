@@ -824,7 +824,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "code",
-              "expr": "round(avg_over_time((sum by (span_name) (rate(span_metrics_calls_total{span_kind="SPAN_KIND_SERVER", service_name="$app"}[5m])) * 60)[15m:1m]),1)",
+              "expr": "round(avg_over_time((sum by (span_name) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[5m])) * 60)[15m:1m]),1)",
               "hide": false,
               "instant": false,
               "legendFormat": "{{`{{span_name}}`}}",
