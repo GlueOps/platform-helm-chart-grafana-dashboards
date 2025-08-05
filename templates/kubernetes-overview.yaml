@@ -28,7 +28,7 @@ data:
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 41,
+    "id": 3,
     "links": [],
     "panels": [
         {
@@ -56,7 +56,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     },
                     {
                         "color": "red",
@@ -71,7 +72,7 @@ data:
                 "h": 4,
                 "w": 2,
                 "x": 0,
-                "y": 9
+                "y": 1
             },
             "id": 1,
             "options": {
@@ -79,6 +80,7 @@ data:
                 "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                 "calcs": [
                     "lastNotNull"
@@ -90,7 +92,7 @@ data:
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.8",
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -123,7 +125,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     },
                     {
                         "color": "red",
@@ -138,7 +141,7 @@ data:
                 "h": 4,
                 "w": 2,
                 "x": 2,
-                "y": 9
+                "y": 1
             },
             "id": 2,
             "options": {
@@ -146,6 +149,7 @@ data:
                 "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                 "calcs": [
                     "lastNotNull"
@@ -157,7 +161,7 @@ data:
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.8",
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -190,7 +194,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     },
                     {
                         "color": "red",
@@ -205,7 +210,7 @@ data:
                 "h": 4,
                 "w": 2,
                 "x": 4,
-                "y": 9
+                "y": 1
             },
             "id": 3,
             "options": {
@@ -213,6 +218,7 @@ data:
                 "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                 "calcs": [
                     "lastNotNull"
@@ -224,7 +230,7 @@ data:
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.8",
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -258,7 +264,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     }
                     ]
                 }
@@ -269,7 +276,7 @@ data:
                 "h": 4,
                 "w": 2,
                 "x": 6,
-                "y": 9
+                "y": 1
             },
             "id": 4,
             "options": {
@@ -277,6 +284,7 @@ data:
                 "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                 "calcs": [
                     "lastNotNull"
@@ -288,7 +296,7 @@ data:
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.8",
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -321,7 +329,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     }
                     ]
                 },
@@ -333,7 +342,7 @@ data:
                 "h": 4,
                 "w": 2,
                 "x": 8,
-                "y": 9
+                "y": 1
             },
             "id": 5,
             "options": {
@@ -341,6 +350,7 @@ data:
                 "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                 "calcs": [
                     "lastNotNull"
@@ -352,7 +362,7 @@ data:
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.8",
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -386,7 +396,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     }
                     ]
                 }
@@ -397,7 +408,7 @@ data:
                 "h": 4,
                 "w": 2,
                 "x": 10,
-                "y": 9
+                "y": 1
             },
             "id": 6,
             "options": {
@@ -405,6 +416,7 @@ data:
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                 "calcs": [
                     "lastNotNull"
@@ -416,7 +428,7 @@ data:
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.8",
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -449,7 +461,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     },
                     {
                         "color": "red",
@@ -464,7 +477,7 @@ data:
                 "h": 4,
                 "w": 2,
                 "x": 12,
-                "y": 9
+                "y": 1
             },
             "id": 7,
             "options": {
@@ -472,6 +485,7 @@ data:
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                 "calcs": [
                     "lastNotNull"
@@ -483,7 +497,7 @@ data:
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.8",
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -516,7 +530,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     }
                     ]
                 }
@@ -527,7 +542,7 @@ data:
                 "h": 4,
                 "w": 2,
                 "x": 14,
-                "y": 9
+                "y": 1
             },
             "id": 8,
             "options": {
@@ -535,6 +550,7 @@ data:
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                 "calcs": [
                     "lastNotNull"
@@ -546,7 +562,7 @@ data:
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.8",
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -579,7 +595,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     }
                     ]
                 }
@@ -590,7 +607,7 @@ data:
                 "h": 4,
                 "w": 2,
                 "x": 16,
-                "y": 9
+                "y": 1
             },
             "id": 9,
             "options": {
@@ -598,6 +615,7 @@ data:
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                 "calcs": [
                     "lastNotNull"
@@ -609,7 +627,7 @@ data:
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.8",
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -644,6 +662,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -673,7 +692,7 @@ data:
                     {
                     "targetBlank": true,
                     "title": "Cpu Utilization ",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__series.name}"
+                    "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__series.name}"
                     }
                 ],
                 "mappings": [],
@@ -681,7 +700,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     },
                     {
                         "color": "red",
@@ -722,7 +742,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 13
+                "y": 5
             },
             "id": 10,
             "options": {
@@ -737,6 +757,7 @@ data:
                 "sort": "none"
                 }
             },
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -771,6 +792,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -800,7 +822,7 @@ data:
                     {
                     "targetBlank": true,
                     "title": "Memory Utilization",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__series.name}"
+                    "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__series.name}"
                     }
                 ],
                 "mappings": [],
@@ -808,7 +830,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     },
                     {
                         "color": "red",
@@ -823,7 +846,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 13
+                "y": 5
             },
             "id": 11,
             "options": {
@@ -838,6 +861,7 @@ data:
                 "sort": "none"
                 }
             },
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -847,7 +871,7 @@ data:
                 "editorMode": "code",
                 "expr": "100 * (1 - ((avg_over_time(node_memory_MemFree_bytes[5m]) + avg_over_time(node_memory_Cached_bytes[5m]) + avg_over_time(node_memory_Buffers_bytes[5m])) / avg_over_time(node_memory_MemTotal_bytes[5m])))",
                 "instant": false,
-                "legendFormat": "{{`{{instance}}`}}",
+                "legendFormat": "{{instance}}",
                 "range": true,
                 "refId": "A"
                 }
@@ -872,6 +896,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -901,7 +926,7 @@ data:
                     {
                     "targetBlank": true,
                     "title": "Network Utilization",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
+                    "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
                     }
                 ],
                 "mappings": [],
@@ -909,7 +934,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     },
                     {
                         "color": "red",
@@ -925,7 +951,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 21
+                "y": 13
             },
             "id": 40,
             "options": {
@@ -940,6 +966,7 @@ data:
                 "sort": "none"
                 }
             },
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -949,7 +976,7 @@ data:
                 "editorMode": "code",
                 "expr": "irate(node_network_receive_bytes_total{}[$__rate_interval])*8",
                 "instant": false,
-                "legendFormat": "recv {{`{{device}}`}}-{{`{{instance}}`}}",
+                "legendFormat": "recv {{device}}-{{instance}}",
                 "range": true,
                 "refId": "A"
                 }
@@ -974,6 +1001,7 @@ data:
                     "axisLabel": "",
                     "axisPlacement": "auto",
                     "barAlignment": 0,
+                    "barWidthFactor": 0.6,
                     "drawStyle": "line",
                     "fillOpacity": 0,
                     "gradientMode": "none",
@@ -1003,7 +1031,7 @@ data:
                     {
                     "targetBlank": true,
                     "title": "Network Utilization",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
+                    "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/rYdddlPWk/node-overview?var-node=${__field.labels.instance}"
                     }
                 ],
                 "mappings": [],
@@ -1011,7 +1039,8 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green"
+                        "color": "green",
+                        "value": null
                     },
                     {
                         "color": "red",
@@ -1027,7 +1056,7 @@ data:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 21
+                "y": 13
             },
             "id": 41,
             "options": {
@@ -1042,6 +1071,7 @@ data:
                 "sort": "none"
                 }
             },
+            "pluginVersion": "11.4.3",
             "targets": [
                 {
                 "datasource": {
@@ -1051,7 +1081,7 @@ data:
                 "editorMode": "code",
                 "expr": "irate(node_network_transmit_bytes_total{}[$__rate_interval])*8",
                 "instant": false,
-                "legendFormat": "{{`{{device}}`}}-{{`{{instance}}`}}",
+                "legendFormat": "{{device}}-{{instance}}",
                 "range": true,
                 "refId": "A"
                 }
@@ -1399,7 +1429,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "CPU Usage",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-datasource=prometheus&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -1417,32 +1447,7 @@ data:
                 ]
             }
             },
-            "overrides": [
-            {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                "id": "byNames",
-                "options": {
-                    "mode": "exclude",
-                    "names": [
-                    "glueops-otel"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                }
-                },
-                "properties": [
-                {
-                    "id": "custom.hideFrom",
-                    "value": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": true
-                    }
-                }
-                ]
-            }
-            ]
+            "overrides": []
         },
         "gridPos": {
             "h": 8,
@@ -1602,7 +1607,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "CPU intensive",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
                 }
             ],
             "mappings": [],
@@ -1631,30 +1636,6 @@ data:
                 {
                     "id": "custom.width",
                     "value": 137
-                }
-                ]
-            },
-            {
-                "matcher": {
-                "id": "byName",
-                "options": "CPU Usage"
-                },
-                "properties": [
-                {
-                    "id": "custom.width",
-                    "value": 77
-                }
-                ]
-            },
-            {
-                "matcher": {
-                "id": "byName",
-                "options": "CPU Requests"
-                },
-                "properties": [
-                {
-                    "id": "custom.width",
-                    "value": 138
                 }
                 ]
             }
@@ -1813,7 +1794,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "memory",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
                 }
             ],
             "mappings": [],
@@ -2042,7 +2023,7 @@ data:
                 "barAlignment": 0,
                 "barWidthFactor": 0.6,
                 "drawStyle": "line",
-                "fillOpacity": 0,
+                "fillOpacity": 16,
                 "gradientMode": "none",
                 "hideFrom": {
                 "legend": false,
@@ -2050,7 +2031,7 @@ data:
                 "viz": false
                 },
                 "insertNulls": false,
-                "lineInterpolation": "linear",
+                "lineInterpolation": "smooth",
                 "lineWidth": 1,
                 "pointSize": 5,
                 "scaleDistribution": {
@@ -2060,7 +2041,7 @@ data:
                 "spanNulls": false,
                 "stacking": {
                 "group": "A",
-                "mode": "none"
+                "mode": "normal"
                 },
                 "thresholdsStyle": {
                 "mode": "off"
@@ -2070,7 +2051,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "CPU Throttle",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2080,14 +2061,9 @@ data:
                 {
                     "color": "green",
                     "value": null
-                },
-                {
-                    "color": "red",
-                    "value": 80
                 }
                 ]
-            },
-            "unit": "ms"
+            }
             },
             "overrides": []
         },
@@ -2118,9 +2094,9 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "avg(container_cpu_cfs_throttled_periods_total{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
+            "expr": "avg by (label_app_kubernetes_io_name) (\n  (\n    rate(container_cpu_cfs_throttled_periods_total{namespace=\"$namespace\", container!=\"\"}[$time_bucket])\n    /\n    rate(container_cpu_cfs_periods_total{namespace=\"$namespace\", container!=\"\"}[$time_bucket])\n  ) \n  * on(pod, namespace) group_left(label_app_kubernetes_io_name)\n  (\n    max by (pod, namespace, label_app_kubernetes_io_name) (\n      kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=\"\"}\n    )\n  )\n) *100",
             "instant": false,
-            "legendFormat": "{{`{{label_app_kubernetes_io_name}}`}}",
+            "legendFormat": "{{label_app_kubernetes_io_name}}",
             "range": true,
             "refId": "A"
             }
@@ -2175,7 +2151,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Memory Usage",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2225,7 +2201,7 @@ data:
             "editorMode": "code",
             "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
             "instant": false,
-            "legendFormat": "{{`{{label_app_kubernetes_io_name}}`}}",
+            "legendFormat": "{{label_app_kubernetes_io_name}}",
             "range": true,
             "refId": "A"
             }
@@ -2320,7 +2296,7 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sum(kube_pod_container_status_last_terminated_reason{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
+            "expr": "sum(\n  increase(kube_pod_container_status_restarts_total{namespace=\"$namespace\", container!=\"\"}[$time_bucket])\n  * on(pod)\n    group_left(label_app_kubernetes_io_name)\n    max by (pod, label_app_kubernetes_io_name) (\n      kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=\"\"}\n    )\n) by (label_app_kubernetes_io_name) > 0",
             "instant": false,
             "legendFormat": "__auto",
             "range": true,
@@ -2377,7 +2353,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Bandwith Utilization ",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2482,7 +2458,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Container Restarts",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2529,7 +2505,7 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sum(kube_pod_container_status_restarts_total{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
+            "expr": "sum(\n  increase(kube_pod_container_status_restarts_total{namespace=\"$namespace\", container!=\"\"}[5m])\n  * on(pod)\n    group_left(label_app_kubernetes_io_name)\n    max by (pod, label_app_kubernetes_io_name) (\n      kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=\"\"}\n    )\n) by (label_app_kubernetes_io_name)",
             "instant": false,
             "legendFormat": "__auto",
             "range": true,
@@ -2586,7 +2562,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Bytes Dropped",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2690,7 +2666,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Transmitted Bytes",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2795,7 +2771,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Bytes Dropped",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__field.labels.label_app_kubernetes_io_name}"
                 }
             ],
             "mappings": [],
@@ -2912,7 +2888,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Show Details",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
                 }
             ],
             "mappings": [],
@@ -2959,7 +2935,7 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "round(avg_over_time((sum by (service_name) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[5m])) * 60)[15m:1m]),1)",
+            "expr": "round(avg_over_time((sum by (service_name) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[$time_bucket])) * 60)[$time_bucket:1m]),1)",
             "instant": false,
             "legendFormat": "__auto",
             "range": true,
@@ -3016,7 +2992,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Show Details",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
                 }
             ],
             "mappings": [],
@@ -3120,7 +3096,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Show Details",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
                 }
             ],
             "mappings": [],
@@ -3168,7 +3144,7 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "round(avg_over_time(histogram_quantile(0.95,sum by (le, service_name) (rate(span_metrics_duration_milliseconds_bucket{span_kind=\"SPAN_KIND_SERVER\"}[10m])))[15m:1m]), 0.1)",
+            "expr": "round(avg_over_time(histogram_quantile(0.95,sum by (le, service_name) (rate(span_metrics_duration_milliseconds_bucket{span_kind=\"SPAN_KIND_SERVER\"}[$time_bucket])))[$time_bucket:1m]), 0.1)",
             "instant": false,
             "legendFormat": "__auto",
             "range": true,
@@ -3199,7 +3175,7 @@ data:
                 }
                 ]
             },
-            "unit": "locale"
+            "unit": "none"
             },
             "overrides": []
         },
@@ -3242,7 +3218,7 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sort_desc(topK(10,sum(span_metrics_calls_total{net_peer_ip!='',span_kind=\"SPAN_KIND_SERVER\",service_name=\"nginx-proxy\"}) by(net_peer_ip)))",
+            "expr": "sort(sum(span_metrics_calls_total{net_peer_ip!='',span_kind=\"SPAN_KIND_SERVER\",service_name=\"nginx-proxy\"}) by(net_peer_ip))",
             "instant": false,
             "legendFormat": "__auto",
             "range": true,
@@ -3266,7 +3242,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Show Details",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service}&var-route=All"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service}&var-route=All"
                 }
             ],
             "mappings": [],
@@ -3295,7 +3271,7 @@ data:
         },
         "id": 37,
         "options": {
-            "displayMode": "gradient",
+            "displayMode": "lcd",
             "legend": {
             "calcs": [],
             "displayMode": "list",
@@ -3328,7 +3304,7 @@ data:
             "editorMode": "code",
             "expr": "sort(sum(span_metrics_duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"} / span_metrics_duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"}) by (service_name))",
             "instant": false,
-            "legendFormat": "{{`{{service}}`}}",
+            "legendFormat": "{{service}}",
             "range": true,
             "refId": "A"
             }
@@ -3353,6 +3329,7 @@ data:
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
+                "barWidthFactor": 0.6,
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
@@ -3382,7 +3359,7 @@ data:
                 {
                 "targetBlank": true,
                 "title": "Show Details",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
                 }
             ],
             "mappings": [],
@@ -3390,7 +3367,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                 {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                 },
                 {
                     "color": "red",
@@ -3399,32 +3377,7 @@ data:
                 ]
             }
             },
-            "overrides": [
-            {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                "id": "byNames",
-                "options": {
-                    "mode": "exclude",
-                    "names": [
-                    "[200] backend-api-stage"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                }
-                },
-                "properties": [
-                {
-                    "id": "custom.hideFrom",
-                    "value": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": true
-                    }
-                }
-                ]
-            }
-            ]
+            "overrides": []
         },
         "gridPos": {
             "h": 8,
@@ -3445,6 +3398,7 @@ data:
             "sort": "none"
             }
         },
+        "pluginVersion": "11.4.3",
         "targets": [
             {
             "datasource": {
@@ -3452,9 +3406,9 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "round(avg_over_time((sum by (http_status_code,service_name) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[5m])) * 60)[15m:1m]),1)",
+            "expr": "round(avg_over_time((sum by (http_status_code,service_name) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[$time_bucket])) * 60)[$time_bucket:1m]),1)",
             "instant": false,
-            "legendFormat": "[{{`{{http_status_code}}`}}] {{`{{service_name}}`}}",
+            "legendFormat": "[{{http_status_code}}] {{service_name}}",
             "range": true,
             "refId": "A"
             }
@@ -3484,7 +3438,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                 {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                 },
                 {
                     "color": "red",
@@ -3520,7 +3475,7 @@ data:
             }
             ]
         },
-        "pluginVersion": "10.4.8",
+        "pluginVersion": "11.4.3",
         "targets": [
             {
             "datasource": {
@@ -3573,7 +3528,8 @@ data:
                 "mode": "absolute",
                 "steps": [
                 {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                 },
                 {
                     "color": "red",
@@ -3603,7 +3559,7 @@ data:
             },
             "showHeader": true
         },
-        "pluginVersion": "10.4.8",
+        "pluginVersion": "11.4.3",
         "targets": [
             {
             "datasource": {
@@ -3622,6 +3578,14 @@ data:
                 "tag": "duration",
                 "value": "1",
                 "valueType": "duration"
+                },
+                {
+                "id": "status",
+                "operator": "=",
+                "scope": "intrinsic",
+                "tag": "status",
+                "value": "error",
+                "valueType": "keyword"
                 }
             ],
             "limit": 20,
@@ -3662,6 +3626,40 @@ data:
             "refresh": 1,
             "regex": "",
             "type": "query"
+        },
+        {
+            "current": {
+            "text": "10m",
+            "value": "10m"
+            },
+            "description": "",
+            "hide": 1,
+            "label": "Time Bucket",
+            "name": "time_bucket",
+            "options": [
+            {
+                "selected": false,
+                "text": "5m",
+                "value": "5m"
+            },
+            {
+                "selected": true,
+                "text": "10m",
+                "value": "10m"
+            },
+            {
+                "selected": false,
+                "text": "15m",
+                "value": "15m"
+            },
+            {
+                "selected": false,
+                "text": "20m",
+                "value": "20m"
+            }
+            ],
+            "query": "5m,10m,15m,20m",
+            "type": "custom"
         }
         ]
     },
@@ -3673,6 +3671,6 @@ data:
     "timezone": "browser",
     "title": "Kubernetes Overview",
     "uid": "ee58kcteeir5sf",
-    "version": 1,
+    "version": 2,
     "weekStart": ""
     }
