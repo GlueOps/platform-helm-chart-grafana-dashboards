@@ -29,10 +29,9 @@ data:
       "description": "A language-agnostic application performance management(APM) with OpenTelemetry, Grafana, and Prometheus.",
       "editable": true,
       "fiscalYearStartMonth": 0,
-      "gnetId": 19419,
       "graphTooltip": 0,
+      "id": 1,
       "links": [],
-      "liveNow": false,
       "panels": [
         {
           "datasource": {
@@ -53,6 +52,7 @@ data:
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
+                "barWidthFactor": 0.6,
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
@@ -111,7 +111,7 @@ data:
               "sort": "none"
             }
           },
-          "pluginVersion": "10.4.8",
+          "pluginVersion": "11.4.3",
           "targets": [
             {
               "datasource": {
@@ -119,7 +119,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "code",
-              "expr": "round(avg_over_time((sum by (service_name) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[5m])) * 60)[15m:1m]),1)",
+              "expr": "round(avg_over_time((sum by (service_name) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[$time_bucket])) * 60)[$time_bucket:1m]),1)",
               "instant": false,
               "legendFormat": "{{`{{label_name}}`}}",
               "range": true,
@@ -163,6 +163,7 @@ data:
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
+                "barWidthFactor": 0.6,
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
@@ -221,7 +222,7 @@ data:
               "sort": "none"
             }
           },
-          "pluginVersion": "10.4.8",
+          "pluginVersion": "11.4.3",
           "targets": [
             {
               "datasource": {
@@ -230,7 +231,7 @@ data:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "round(avg_over_time((sum by (http_status_code) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\",http_status_code=~\"^2.*\"}[5m])) * 60)[15m:1m]),1)",
+              "expr": "round(avg_over_time((sum by (http_status_code) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\",http_status_code=~\"^2.*\"}[$time_bucket])) * 60)[$time_bucket:1m]),1)",
               "format": "time_series",
               "instant": false,
               "legendFormat": "Http Status 2XX",
@@ -359,7 +360,7 @@ data:
             "showThresholdMarkers": true,
             "sizing": "auto"
           },
-          "pluginVersion": "10.4.8",
+          "pluginVersion": "11.4.3",
           "targets": [
             {
               "datasource": {
@@ -428,7 +429,7 @@ data:
             "showThresholdMarkers": true,
             "sizing": "auto"
           },
-          "pluginVersion": "10.4.8",
+          "pluginVersion": "11.4.3",
           "targets": [
             {
               "datasource": {
@@ -500,6 +501,7 @@ data:
               "sort": "none"
             }
           },
+          "pluginVersion": "11.4.3",
           "targets": [
             {
               "datasource": {
@@ -518,76 +520,82 @@ data:
           "type": "piechart"
         },
         {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "prometheus"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "ms"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 7,
-        "x": 6,
-        "y": 6
-      },
-      "id": 11,
-      "options": {
-        "displayMode": "lcd",
-        "maxVizHeight": 300,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "10.4.8",
-      "targets": [
-        {
           "datasource": {
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg(span_metrics_duration_milliseconds_sum{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}/span_metrics_duration_milliseconds_count{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}) by (http_target)",
-          "instant": false,
-          "legendFormat": "{{`{{http_target}}`}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Average latency",
-      "type": "bargauge"
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 7,
+            "x": 6,
+            "y": 6
+          },
+          "id": 11,
+          "options": {
+            "displayMode": "lcd",
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "maxVizHeight": 300,
+            "minVizHeight": 16,
+            "minVizWidth": 8,
+            "namePlacement": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true,
+            "sizing": "auto",
+            "valueMode": "color"
+          },
+          "pluginVersion": "11.4.3",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "avg(span_metrics_duration_milliseconds_sum{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}/span_metrics_duration_milliseconds_count{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}) by (http_target)",
+              "instant": false,
+              "legendFormat": "{{`{{http_target}}`}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Average latency",
+          "type": "bargauge"
         },
         {
           "datasource": {
@@ -607,6 +615,7 @@ data:
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
+                "barWidthFactor": 0.6,
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
@@ -648,32 +657,7 @@ data:
               },
               "unit": "ms"
             },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "GET /orders/getorder"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
+            "overrides": []
           },
           "gridPos": {
             "h": 8,
@@ -694,6 +678,7 @@ data:
               "sort": "none"
             }
           },
+          "pluginVersion": "11.4.3",
           "targets": [
             {
               "datasource": {
@@ -701,7 +686,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "code",
-              "expr": "round(avg_over_time(histogram_quantile(0.95,sum by (le, span_name) (rate(span_metrics_duration_milliseconds_bucket{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[10m])))[15m:1m]), 0.1)",
+              "expr": "round(avg_over_time(histogram_quantile(0.95,sum by (le, span_name) (rate(span_metrics_duration_milliseconds_bucket{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[$time_bucket])))[$time_bucket:1m]), 0.1)",
               "instant": false,
               "legendFormat": "{{`{{span_name}}`}}",
               "range": true,
@@ -729,6 +714,7 @@ data:
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
+                "barWidthFactor": 0.6,
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
@@ -770,32 +756,7 @@ data:
               },
               "unit": "reqpm"
             },
-            "overrides": [
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "GET /orders/details"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
-              }
-            ]
+            "overrides": []
           },
           "gridPos": {
             "h": 8,
@@ -816,7 +777,7 @@ data:
               "sort": "none"
             }
           },
-          "pluginVersion": "10.0.2",
+          "pluginVersion": "11.4.3",
           "targets": [
             {
               "datasource": {
@@ -824,7 +785,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "code",
-              "expr": "round(avg_over_time((sum by (span_name) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[5m])) * 60)[15m:1m]),1)",
+              "expr": "round(avg_over_time((sum by (span_name) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", service_name=\"$app\"}[$time_bucket])) * 60)[$time_bucket:1m]),1)",
               "hide": false,
               "instant": false,
               "legendFormat": "{{`{{span_name}}`}}",
@@ -966,7 +927,7 @@ data:
             "showHeader": true,
             "sortBy": []
           },
-          "pluginVersion": "10.4.8",
+          "pluginVersion": "11.4.3",
           "targets": [
             {
               "datasource": {
@@ -1061,14 +1022,14 @@ data:
           "type": "table"
         }
       ],
+      "preload": false,
       "refresh": "30s",
-      "schemaVersion": 39,
+      "schemaVersion": 40,
       "tags": [],
       "templating": {
         "list": [
           {
             "current": {
-              "selected": true,
               "text": "taco-backend-prod",
               "value": "taco-backend-prod"
             },
@@ -1077,10 +1038,8 @@ data:
               "uid": "prometheus"
             },
             "definition": "label_values(service_name)",
-            "hide": 0,
             "includeAll": false,
             "label": "Application",
-            "multi": false,
             "name": "app",
             "options": [],
             "query": {
@@ -1089,13 +1048,10 @@ data:
             },
             "refresh": 1,
             "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
             "type": "query"
           },
           {
             "current": {
-              "selected": true,
               "text": [
                 "All"
               ],
@@ -1108,7 +1064,6 @@ data:
               "uid": "prometheus"
             },
             "definition": "label_values(http_route)",
-            "hide": 0,
             "includeAll": true,
             "label": "Route",
             "multi": true,
@@ -1120,9 +1075,40 @@ data:
             },
             "refresh": 1,
             "regex": "",
-            "skipUrlSync": false,
-            "sort": 0,
             "type": "query"
+          },
+          {
+            "current": {
+              "text": "10m",
+              "value": "10m"
+            },
+            "hide": 1,
+            "label": "Time bucket",
+            "name": "time_bucket",
+            "options": [
+              {
+                "selected": false,
+                "text": "5m",
+                "value": "5m"
+              },
+              {
+                "selected": true,
+                "text": "10m",
+                "value": "10m"
+              },
+              {
+                "selected": false,
+                "text": "15m",
+                "value": "15m"
+              },
+              {
+                "selected": false,
+                "text": "20m",
+                "value": "20m"
+              }
+            ],
+            "query": "5m,10m,15m,20m",
+            "type": "custom"
           }
         ]
       },
