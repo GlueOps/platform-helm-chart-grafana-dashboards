@@ -871,7 +871,7 @@ data:
                 "editorMode": "code",
                 "expr": "100 * (1 - ((avg_over_time(node_memory_MemFree_bytes[5m]) + avg_over_time(node_memory_Cached_bytes[5m]) + avg_over_time(node_memory_Buffers_bytes[5m])) / avg_over_time(node_memory_MemTotal_bytes[5m])))",
                 "instant": false,
-                "legendFormat": "{{instance}}",
+                "legendFormat": "{{`{{instance}}`}}",
                 "range": true,
                 "refId": "A"
                 }
@@ -976,7 +976,7 @@ data:
                 "editorMode": "code",
                 "expr": "irate(node_network_receive_bytes_total{}[$__rate_interval])*8",
                 "instant": false,
-                "legendFormat": "recv {{device}}-{{instance}}",
+                "legendFormat": "recv {{`{{device}}`}}-{{`{{instance}}`}}",
                 "range": true,
                 "refId": "A"
                 }
@@ -1081,7 +1081,7 @@ data:
                 "editorMode": "code",
                 "expr": "irate(node_network_transmit_bytes_total{}[$__rate_interval])*8",
                 "instant": false,
-                "legendFormat": "{{device}}-{{instance}}",
+                "legendFormat": "{{`{{device}}`}}-{{`{{instance}}`}}",
                 "range": true,
                 "refId": "A"
                 }
@@ -2096,7 +2096,7 @@ data:
             "editorMode": "code",
             "expr": "avg by (label_app_kubernetes_io_name) (\n  (\n    rate(container_cpu_cfs_throttled_periods_total{namespace=\"$namespace\", container!=\"\"}[$time_bucket])\n    /\n    rate(container_cpu_cfs_periods_total{namespace=\"$namespace\", container!=\"\"}[$time_bucket])\n  ) \n  * on(pod, namespace) group_left(label_app_kubernetes_io_name)\n  (\n    max by (pod, namespace, label_app_kubernetes_io_name) (\n      kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=\"\"}\n    )\n  )\n) *100",
             "instant": false,
-            "legendFormat": "{{label_app_kubernetes_io_name}}",
+            "legendFormat": "{{`{{label_app_kubernetes_io_name}}`}}",
             "range": true,
             "refId": "A"
             }
@@ -2201,7 +2201,7 @@ data:
             "editorMode": "code",
             "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
             "instant": false,
-            "legendFormat": "{{label_app_kubernetes_io_name}}",
+            "legendFormat": "{{`{{label_app_kubernetes_io_name}}`}}",
             "range": true,
             "refId": "A"
             }
@@ -3304,7 +3304,7 @@ data:
             "editorMode": "code",
             "expr": "sort(sum(span_metrics_duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"} / span_metrics_duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"}) by (service_name))",
             "instant": false,
-            "legendFormat": "{{service}}",
+            "legendFormat": "{{`{{service}}`}}",
             "range": true,
             "refId": "A"
             }
@@ -3408,7 +3408,7 @@ data:
             "editorMode": "code",
             "expr": "round(avg_over_time((sum by (http_status_code,service_name) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[$time_bucket])) * 60)[$time_bucket:1m]),1)",
             "instant": false,
-            "legendFormat": "[{{http_status_code}}] {{service_name}}",
+            "legendFormat": "[{{`{{http_status_code}}`}}] {{`{{service_name}}`}}",
             "range": true,
             "refId": "A"
             }
