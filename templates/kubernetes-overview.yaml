@@ -28,7 +28,7 @@ data:
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 3,
+    "id": 2,
     "links": [],
     "panels": [
         {
@@ -56,8 +56,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     },
                     {
                         "color": "red",
@@ -125,8 +124,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     },
                     {
                         "color": "red",
@@ -194,8 +192,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     },
                     {
                         "color": "red",
@@ -264,8 +261,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     }
                     ]
                 }
@@ -329,8 +325,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     }
                     ]
                 },
@@ -396,8 +391,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     }
                     ]
                 }
@@ -461,8 +455,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     },
                     {
                         "color": "red",
@@ -530,8 +523,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     }
                     ]
                 }
@@ -595,8 +587,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     }
                     ]
                 }
@@ -700,8 +691,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     },
                     {
                         "color": "red",
@@ -830,8 +820,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     },
                     {
                         "color": "red",
@@ -871,7 +860,7 @@ data:
                 "editorMode": "code",
                 "expr": "100 * (1 - ((avg_over_time(node_memory_MemFree_bytes[5m]) + avg_over_time(node_memory_Cached_bytes[5m]) + avg_over_time(node_memory_Buffers_bytes[5m])) / avg_over_time(node_memory_MemTotal_bytes[5m])))",
                 "instant": false,
-                "legendFormat": "{{`{{instance}}`}}",
+                "legendFormat": "{{instance}}",
                 "range": true,
                 "refId": "A"
                 }
@@ -934,8 +923,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     },
                     {
                         "color": "red",
@@ -976,7 +964,7 @@ data:
                 "editorMode": "code",
                 "expr": "irate(node_network_receive_bytes_total{}[$__rate_interval])*8",
                 "instant": false,
-                "legendFormat": "recv {{`{{device}}`}}-{{`{{instance}}`}}",
+                "legendFormat": "recv {{device}}-{{instance}}",
                 "range": true,
                 "refId": "A"
                 }
@@ -1039,8 +1027,7 @@ data:
                     "mode": "absolute",
                     "steps": [
                     {
-                        "color": "green",
-                        "value": null
+                        "color": "green"
                     },
                     {
                         "color": "red",
@@ -1081,7 +1068,7 @@ data:
                 "editorMode": "code",
                 "expr": "irate(node_network_transmit_bytes_total{}[$__rate_interval])*8",
                 "instant": false,
-                "legendFormat": "{{`{{device}}`}}-{{`{{instance}}`}}",
+                "legendFormat": "{{device}}-{{instance}}",
                 "range": true,
                 "refId": "A"
                 }
@@ -1626,20 +1613,7 @@ data:
             },
             "unit": "none"
             },
-            "overrides": [
-            {
-                "matcher": {
-                "id": "byName",
-                "options": "App"
-                },
-                "properties": [
-                {
-                    "id": "custom.width",
-                    "value": 137
-                }
-                ]
-            }
-            ]
+            "overrides": []
         },
         "gridPos": {
             "h": 7,
@@ -2041,10 +2015,10 @@ data:
                 "spanNulls": false,
                 "stacking": {
                 "group": "A",
-                "mode": "normal"
+                "mode": "none"
                 },
                 "thresholdsStyle": {
-                "mode": "off"
+                "mode": "area"
                 }
             },
             "links": [
@@ -2063,7 +2037,8 @@ data:
                     "value": null
                 }
                 ]
-            }
+            },
+            "unit": "percentunit"
             },
             "overrides": []
         },
@@ -2094,9 +2069,9 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "avg by (label_app_kubernetes_io_name) (\n  (\n    rate(container_cpu_cfs_throttled_periods_total{namespace=\"$namespace\", container!=\"\"}[$time_bucket])\n    /\n    rate(container_cpu_cfs_periods_total{namespace=\"$namespace\", container!=\"\"}[$time_bucket])\n  ) \n  * on(pod, namespace) group_left(label_app_kubernetes_io_name)\n  (\n    max by (pod, namespace, label_app_kubernetes_io_name) (\n      kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=\"\"}\n    )\n  )\n) *100",
+            "expr": "avg by (label_app_kubernetes_io_name) (\n  (\n    rate(container_cpu_cfs_throttled_periods_total{namespace=\"$namespace\", container!=\"\"}[$time_bucket])\n    /\n    rate(container_cpu_cfs_periods_total{namespace=\"$namespace\", container!=\"\"}[$time_bucket])\n  ) \n  * on(pod, namespace) group_left(label_app_kubernetes_io_name)\n  (\n    max by (pod, namespace, label_app_kubernetes_io_name) (\n      kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=\"\"}\n    )\n  )\n) ",
             "instant": false,
-            "legendFormat": "{{`{{label_app_kubernetes_io_name}}`}}",
+            "legendFormat": "{{label_app_kubernetes_io_name}}",
             "range": true,
             "refId": "A"
             }
@@ -2201,7 +2176,7 @@ data:
             "editorMode": "code",
             "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",container!=''} * on(pod) group_left(label_app_kubernetes_io_name) max by (pod, label_app_kubernetes_io_name) (kube_pod_labels{namespace=\"$namespace\", label_app_kubernetes_io_name!=''})) by (label_app_kubernetes_io_name)",
             "instant": false,
-            "legendFormat": "{{`{{label_app_kubernetes_io_name}}`}}",
+            "legendFormat": "{{label_app_kubernetes_io_name}}",
             "range": true,
             "refId": "A"
             }
@@ -3039,7 +3014,7 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sum by (service_name) ( rate( span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\",http_status_code=~\"5..\"}[$time_bucket])) * 60",
+            "expr": "sum by (http_status_code) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\", http_status_code=~\"5..\"}[$time_bucket]))",
             "instant": false,
             "legendFormat": "__auto",
             "range": true,
@@ -3155,18 +3130,16 @@ data:
         "type": "timeseries"
         },
         {
-        "id": 42,
-        "type": "bargauge",
-        "title": "Requests from TOP 10 IPs",
-        "description": "",
-        "gridPos": {
-            "x": 0,
-            "y": 57,
-            "h": 8,
-            "w": 12
+        "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
         },
+        "description": "",
         "fieldConfig": {
             "defaults": {
+            "color": {
+                "mode": "thresholds"
+            },
             "mappings": [],
             "thresholds": {
                 "mode": "absolute",
@@ -3177,49 +3150,41 @@ data:
                 }
                 ]
             },
-            "color": {
-                "mode": "thresholds"
-            },
             "unit": "none"
             },
             "overrides": []
         },
-        "transformations": [
-            {
-            "id": "reduce",
-            "options": {
-                "reducers": [
-                "logmin"
-                ],
-                "labelsToFields": true
-            }
+        "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 57
+        },
+        "id": 42,
+        "options": {
+            "displayMode": "lcd",
+            "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
             },
-            {
-            "id": "organize",
-            "options": {
-                "excludeByName": {
-                "Field": true
-                },
-                "indexByName": {},
-                "renameByName": {
-                "Field": ""
-                },
-                "includeByName": {}
-            }
+            "maxVizHeight": 300,
+            "minVizHeight": 16,
+            "minVizWidth": 8,
+            "namePlacement": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+            "calcs": [
+                "lastNotNull"
+            ],
+            "fields": "",
+            "values": true
             },
-            {
-            "id": "sortBy",
-            "options": {
-                "fields": {},
-                "sort": [
-                {
-                    "field": "Min (above zero)",
-                    "desc": true
-                }
-                ]
-            }
-            }
-        ],
+            "showUnfilled": true,
+            "sizing": "auto",
+            "valueMode": "color"
+        },
         "pluginVersion": "11.4.3",
         "targets": [
             {
@@ -3235,47 +3200,60 @@ data:
             "refId": "A"
             }
         ],
+        "title": "Requests from TOP 10 IPs",
+        "transformations": [
+            {
+            "id": "reduce",
+            "options": {
+                "labelsToFields": true,
+                "reducers": [
+                "logmin"
+                ]
+            }
+            },
+            {
+            "id": "organize",
+            "options": {
+                "excludeByName": {
+                "Field": true
+                },
+                "includeByName": {},
+                "indexByName": {},
+                "renameByName": {}
+            }
+            },
+            {
+            "id": "sortBy",
+            "options": {
+                "fields": {},
+                "sort": [
+                {
+                    "desc": true,
+                    "field": "Min (above zero)"
+                }
+                ]
+            }
+            }
+        ],
+        "type": "bargauge"
+        },
+        {
         "datasource": {
             "type": "prometheus",
             "uid": "prometheus"
         },
-        "options": {
-            "reduceOptions": {
-            "values": true,
-            "calcs": [
-                "lastNotNull"
-            ],
-            "fields": ""
-            },
-            "orientation": "horizontal",
-            "legend": {
-            "showLegend": false,
-            "displayMode": "list",
-            "placement": "bottom",
-            "calcs": []
-            },
-            "displayMode": "lcd",
-            "valueMode": "color",
-            "namePlacement": "auto",
-            "showUnfilled": true,
-            "sizing": "auto",
-            "minVizWidth": 8,
-            "minVizHeight": 16,
-            "maxVizHeight": 300
-        }
-        },
-        {
-        "id": 37,
-        "type": "bargauge",
-        "title": "Average Latency",
-        "gridPos": {
-            "x": 12,
-            "y": 57,
-            "h": 8,
-            "w": 12
-        },
         "fieldConfig": {
             "defaults": {
+            "color": {
+                "mode": "thresholds"
+            },
+            "links": [
+                {
+                "targetBlank": true,
+                "title": "Show Details",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service}&var-route=All"
+                }
+            ],
             "mappings": [],
             "thresholds": {
                 "mode": "absolute",
@@ -3290,56 +3268,41 @@ data:
                 }
                 ]
             },
-            "color": {
-                "mode": "thresholds"
-            },
-            "links": [
-                {
-                "targetBlank": true,
-                "title": "Show Details",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service}&var-route=All"
-                }
-            ],
             "unit": "ms"
             },
             "overrides": []
         },
-        "transformations": [
-            {
-            "id": "reduce",
-            "options": {
-                "reducers": [
-                "logmin"
-                ],
-                "labelsToFields": true
-            }
+        "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 57
+        },
+        "id": 37,
+        "options": {
+            "displayMode": "lcd",
+            "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
             },
-            {
-            "id": "organize",
-            "options": {
-                "excludeByName": {
-                "service_name": false,
-                "Min (above zero)": false,
-                "Field": true
-                },
-                "indexByName": {},
-                "renameByName": {},
-                "includeByName": {}
-            }
+            "maxVizHeight": 300,
+            "minVizHeight": 16,
+            "minVizWidth": 8,
+            "namePlacement": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+            "calcs": [
+                "lastNotNull"
+            ],
+            "fields": "",
+            "values": true
             },
-            {
-            "id": "sortBy",
-            "options": {
-                "fields": {},
-                "sort": [
-                {
-                    "field": "Min (above zero)",
-                    "desc": true
-                }
-                ]
-            }
-            }
-        ],
+            "showUnfilled": true,
+            "sizing": "auto",
+            "valueMode": "color"
+        },
         "pluginVersion": "11.4.3",
         "targets": [
             {
@@ -3355,34 +3318,42 @@ data:
             "refId": "A"
             }
         ],
-        "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-        },
-        "options": {
-            "reduceOptions": {
-            "values": true,
-            "calcs": [
-                "lastNotNull"
-            ],
-            "fields": ""
+        "title": "Average Latency",
+        "transformations": [
+            {
+            "id": "reduce",
+            "options": {
+                "labelsToFields": true,
+                "reducers": [
+                "logmin"
+                ]
+            }
             },
-            "orientation": "horizontal",
-            "legend": {
-            "showLegend": false,
-            "displayMode": "list",
-            "placement": "bottom",
-            "calcs": []
+            {
+            "id": "organize",
+            "options": {
+                "excludeByName": {
+                "Field": true
+                },
+                "includeByName": {},
+                "indexByName": {},
+                "renameByName": {}
+            }
             },
-            "displayMode": "lcd",
-            "valueMode": "color",
-            "namePlacement": "auto",
-            "showUnfilled": true,
-            "sizing": "auto",
-            "minVizWidth": 8,
-            "minVizHeight": 16,
-            "maxVizHeight": 300
-        }
+            {
+            "id": "sortBy",
+            "options": {
+                "fields": {},
+                "sort": [
+                {
+                    "desc": true,
+                    "field": "Min (above zero)"
+                }
+                ]
+            }
+            }
+        ],
+        "type": "bargauge"
         },
         {
         "datasource": {
@@ -3480,7 +3451,7 @@ data:
             "editorMode": "code",
             "expr": "round(avg_over_time((sum by (http_status_code,service_name) (rate(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\"}[$time_bucket])) * 60)[$time_bucket:1m]),1)",
             "instant": false,
-            "legendFormat": "[{{`{{http_status_code}}`}}] {{`{{service_name}}`}}",
+            "legendFormat": "[{{http_status_code}}] {{service_name}}",
             "range": true,
             "refId": "A"
             }
@@ -3689,7 +3660,11 @@ data:
             "includeAll": false,
             "label": "Namespace",
             "name": "namespace",
-            "options": [],
+            "options": [{
+                "selected": true,
+                "text": "nonprod",
+                "value": "nonprod"
+            }],
             "query": {
             "qryType": 1,
             "query": "label_values(namespace)",
@@ -3743,6 +3718,6 @@ data:
     "timezone": "browser",
     "title": "Kubernetes Overview",
     "uid": "ee58kcteeir5sf",
-    "version": 2,
+    "version": 1,
     "weekStart": ""
     }
