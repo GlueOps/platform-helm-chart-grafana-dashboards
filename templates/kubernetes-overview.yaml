@@ -3650,19 +3650,19 @@ data:
         "list": [
         {
             "current": {
-            "text": '{{ index (split "." (printf "%s" .Values.captain_domain)) 0 }}',
-            "value": '{{ index (split "." (printf "%s" .Values.captain_domain)) 0 }}',
+            "text": '{{ .Values.default_namespace}}',
+            "value": '{{ .Values.default_namespace}}'
             },
             "label": "Namespace",
             "name": "namespace",
             "options": [
             {
                 "selected": true,
-                "text": '{{ index (split "." (printf "%s" .Values.captain_domain)) 0 }}',
-                "value": '{{ index (split "." (printf "%s" .Values.captain_domain)) 0 }}',
+                "text": '{{ .Values.default_namespace}}',
+                "value": '{{ .Values.default_namespace}}'
             }
             ],
-            "query": '{{ index (split "." (printf "%s" .Values.captain_domain)) 0 }}',
+            "query": '{{ .Values.default_namespace}}',
             "type": "custom"
         },
         {
