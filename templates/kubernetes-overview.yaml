@@ -3647,32 +3647,23 @@ data:
     "tags": [],
     "templating": {
         "list": [
+        "list": [
         {
             "current": {
-            "text": "glueops-core-otel",
-            "value": "glueops-core-otel"
+            "text": "{{ index (split \".\" .Values.captain_domain) 0 }}",
+            "value": "{{ index (split \".\" .Values.captain_domain) 0 }}"
             },
-            "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-            },
-            "definition": "label_values(namespace)",
-            "includeAll": false,
             "label": "Namespace",
             "name": "namespace",
-            "options": [{
+            "options": [
+            {
                 "selected": true,
-                "text": "nonprod",
-                "value": "nonprod"
-            }],
-            "query": {
-            "qryType": 1,
-            "query": "label_values(namespace)",
-            "refId": "PrometheusVariableQueryEditor-VariableQuery"
-            },
-            "refresh": 1,
-            "regex": "",
-            "type": "query"
+                "text": "{{ index (split \".\" .Values.captain_domain) 0 }}",
+                "value": "{{ index (split \".\" .Values.captain_domain) 0 }}"
+            }
+            ],
+            "query": "{{ index (split \".\" .Values.captain_domain) 0 }}",
+            "type": "custom"
         },
         {
             "current": {
