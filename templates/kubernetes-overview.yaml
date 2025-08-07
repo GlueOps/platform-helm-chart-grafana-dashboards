@@ -3650,19 +3650,19 @@ data:
         "list": [
         {
             "current": {
-            "text": "{{ index (split \".\" .Values.captain_domain) 0 }}",
-            "value": "{{ index (split \".\" .Values.captain_domain) 0 }}"
+            "text": '{{ index (split "." .Values.captain_domain) 0 }}',
+            "value": '{{ index (split "." .Values.captain_domain) 0 }}',
             },
             "label": "Namespace",
             "name": "namespace",
             "options": [
             {
                 "selected": true,
-                "text": "{{ index (split \".\" .Values.captain_domain) 0 }}",
-                "value": "{{ index (split \".\" .Values.captain_domain) 0 }}"
+                "text": '{{ index (split "." .Values.captain_domain) 0 }}',
+                "value": '{{ index (split "." .Values.captain_domain) 0 }}',
             }
             ],
-            "query": "{{ index (split \".\" .Values.captain_domain) 0 }}",
+            "query": '{{ index (split "." .Values.captain_domain) 0 }}',
             "type": "custom"
         },
         {
