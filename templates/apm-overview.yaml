@@ -1115,7 +1115,7 @@ data:
       "timepicker": {},
       "timezone": "",
       "title": "APM Overview",
-      "uid": "apm-overview",
+      "uid": "opentelemetry-apm",
       "version": 2,
       "weekStart": ""
     }
