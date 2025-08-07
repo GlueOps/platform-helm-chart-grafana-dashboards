@@ -126,7 +126,7 @@ data:
               "refId": "A"
             }
           ],
-          "title": "Total Request by Second",
+          "title": "Total Request per Minute",
           "transformations": [
             {
               "id": "seriesToRows",
@@ -284,7 +284,7 @@ data:
               "refId": "5XX"
             }
           ],
-          "title": "Requests Count by Status Code per Second",
+          "title": "Requests Count by Status Code per Minute",
           "transformations": [
             {
               "id": "seriesToRows",
