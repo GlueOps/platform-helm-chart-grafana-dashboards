@@ -3039,7 +3039,7 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sum(span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\",http_status_code=\"^5.*\"}) by(service_name)",
+            "expr": "sum by (service_name) ( rate( span_metrics_calls_total{span_kind=\"SPAN_KIND_SERVER\",http_status_code=~\"5..\"}[$time_bucket])) * 60",
             "instant": false,
             "legendFormat": "__auto",
             "range": true,
@@ -3155,16 +3155,18 @@ data:
         "type": "timeseries"
         },
         {
-        "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-        },
+        "id": 42,
+        "type": "bargauge",
+        "title": "Requests from TOP 10 IPs",
         "description": "",
+        "gridPos": {
+            "x": 0,
+            "y": 57,
+            "h": 8,
+            "w": 12
+        },
         "fieldConfig": {
             "defaults": {
-            "color": {
-                "mode": "thresholds"
-            },
             "mappings": [],
             "thresholds": {
                 "mode": "absolute",
@@ -3175,41 +3177,49 @@ data:
                 }
                 ]
             },
+            "color": {
+                "mode": "thresholds"
+            },
             "unit": "none"
             },
             "overrides": []
         },
-        "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 57
-        },
-        "id": 42,
-        "options": {
-            "displayMode": "lcd",
-            "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
+        "transformations": [
+            {
+            "id": "reduce",
+            "options": {
+                "reducers": [
+                "logmin"
+                ],
+                "labelsToFields": true
+            }
             },
-            "maxVizHeight": 300,
-            "minVizHeight": 16,
-            "minVizWidth": 8,
-            "namePlacement": "auto",
-            "orientation": "horizontal",
-            "reduceOptions": {
-            "calcs": [
-                "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
+            {
+            "id": "organize",
+            "options": {
+                "excludeByName": {
+                "Field": true
+                },
+                "indexByName": {},
+                "renameByName": {
+                "Field": ""
+                },
+                "includeByName": {}
+            }
             },
-            "showUnfilled": true,
-            "sizing": "auto",
-            "valueMode": "color"
-        },
+            {
+            "id": "sortBy",
+            "options": {
+                "fields": {},
+                "sort": [
+                {
+                    "field": "Min (above zero)",
+                    "desc": true
+                }
+                ]
+            }
+            }
+        ],
         "pluginVersion": "11.4.3",
         "targets": [
             {
@@ -3225,26 +3235,47 @@ data:
             "refId": "A"
             }
         ],
-        "title": "Requests from TOP 10 IPs",
-        "type": "bargauge"
-        },
-        {
         "datasource": {
             "type": "prometheus",
             "uid": "prometheus"
         },
+        "options": {
+            "reduceOptions": {
+            "values": true,
+            "calcs": [
+                "lastNotNull"
+            ],
+            "fields": ""
+            },
+            "orientation": "horizontal",
+            "legend": {
+            "showLegend": false,
+            "displayMode": "list",
+            "placement": "bottom",
+            "calcs": []
+            },
+            "displayMode": "lcd",
+            "valueMode": "color",
+            "namePlacement": "auto",
+            "showUnfilled": true,
+            "sizing": "auto",
+            "minVizWidth": 8,
+            "minVizHeight": 16,
+            "maxVizHeight": 300
+        }
+        },
+        {
+        "id": 37,
+        "type": "bargauge",
+        "title": "Average Latency",
+        "gridPos": {
+            "x": 12,
+            "y": 57,
+            "h": 8,
+            "w": 12
+        },
         "fieldConfig": {
             "defaults": {
-            "color": {
-                "mode": "thresholds"
-            },
-            "links": [
-                {
-                "targetBlank": true,
-                "title": "Show Details",
-                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service}&var-route=All"
-                }
-            ],
             "mappings": [],
             "thresholds": {
                 "mode": "absolute",
@@ -3259,41 +3290,56 @@ data:
                 }
                 ]
             },
+            "color": {
+                "mode": "thresholds"
+            },
+            "links": [
+                {
+                "targetBlank": true,
+                "title": "Show Details",
+                "url": "https://grafana.nonprod.gliese667cc.onglueops.rocks/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service}&var-route=All"
+                }
+            ],
             "unit": "ms"
             },
             "overrides": []
         },
-        "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 57
-        },
-        "id": 37,
-        "options": {
-            "displayMode": "lcd",
-            "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
+        "transformations": [
+            {
+            "id": "reduce",
+            "options": {
+                "reducers": [
+                "logmin"
+                ],
+                "labelsToFields": true
+            }
             },
-            "maxVizHeight": 300,
-            "minVizHeight": 16,
-            "minVizWidth": 8,
-            "namePlacement": "auto",
-            "orientation": "horizontal",
-            "reduceOptions": {
-            "calcs": [
-                "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
+            {
+            "id": "organize",
+            "options": {
+                "excludeByName": {
+                "service_name": false,
+                "Min (above zero)": false,
+                "Field": true
+                },
+                "indexByName": {},
+                "renameByName": {},
+                "includeByName": {}
+            }
             },
-            "showUnfilled": true,
-            "sizing": "auto",
-            "valueMode": "color"
-        },
+            {
+            "id": "sortBy",
+            "options": {
+                "fields": {},
+                "sort": [
+                {
+                    "field": "Min (above zero)",
+                    "desc": true
+                }
+                ]
+            }
+            }
+        ],
         "pluginVersion": "11.4.3",
         "targets": [
             {
@@ -3304,13 +3350,39 @@ data:
             "editorMode": "code",
             "expr": "sort(sum(span_metrics_duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"} / span_metrics_duration_milliseconds_sum{span_kind=\"SPAN_KIND_SERVER\", http_status_code!=\"\"}) by (service_name))",
             "instant": false,
-            "legendFormat": "{{`{{service}}`}}",
+            "legendFormat": "{{service}}",
             "range": true,
             "refId": "A"
             }
         ],
-        "title": "Average Latency",
-        "type": "bargauge"
+        "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+        },
+        "options": {
+            "reduceOptions": {
+            "values": true,
+            "calcs": [
+                "lastNotNull"
+            ],
+            "fields": ""
+            },
+            "orientation": "horizontal",
+            "legend": {
+            "showLegend": false,
+            "displayMode": "list",
+            "placement": "bottom",
+            "calcs": []
+            },
+            "displayMode": "lcd",
+            "valueMode": "color",
+            "namePlacement": "auto",
+            "showUnfilled": true,
+            "sizing": "auto",
+            "minVizWidth": 8,
+            "minVizHeight": 16,
+            "maxVizHeight": 300
+        }
         },
         {
         "datasource": {
