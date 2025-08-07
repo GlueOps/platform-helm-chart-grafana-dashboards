@@ -3150,7 +3150,7 @@ data:
                 }
                 ]
             },
-            "unit": "none"
+            "unit": "locale"
             },
             "overrides": []
         },
