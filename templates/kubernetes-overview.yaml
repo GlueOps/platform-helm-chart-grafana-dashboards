@@ -3193,7 +3193,7 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sort(sum(span_metrics_calls_total{net_peer_ip!='',span_kind=\"SPAN_KIND_SERVER\",service_name=\"nginx-proxy\"}) by(net_peer_ip))",
+            "expr": "sort_desc(sum by (net_peer_ip) (rate(span_metrics_calls_total{net_peer_ip!=\"\",span_kind=\"SPAN_KIND_SERVER\",service_name=\"nginx-proxy\"}[$time_bucket])))",
             "instant": false,
             "legendFormat": "__auto",
             "range": true,
@@ -3207,7 +3207,7 @@ data:
             "options": {
                 "labelsToFields": true,
                 "reducers": [
-                "logmin"
+                "mean"
                 ]
             }
             },
@@ -3229,7 +3229,7 @@ data:
                 "sort": [
                 {
                     "desc": true,
-                    "field": "Min (above zero)"
+                    "field": "Mean"
                 }
                 ]
             }
@@ -3647,18 +3647,18 @@ data:
     "tags": [],
     "templating": {
         "list": [
-            {
+        {
             "current": {
-            "text": "{{ .Values.default_namespace }}",
-            "value": "{{ .Values.default_namespace }}"
+            "text": "nonprod",
+            "value": "nonprod"
             },
             "label": "Namespace",
             "name": "namespace",
             "options": [
             {
                 "selected": true,
-                "text": "{{ .Values.default_namespace }}",
-                "value": "{{ .Values.default_namespace }}"
+                "text": "nonprod",
+                "value": "nonprod"
             }
             ],
             "query": "nonprod",
@@ -3708,6 +3708,6 @@ data:
     "timezone": "browser",
     "title": "Kubernetes Overview",
     "uid": "ee58kcteeir5sf",
-    "version": 1,
+    "version": 6,
     "weekStart": ""
     }
