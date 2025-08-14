@@ -3193,7 +3193,7 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sort_desc(sum by (net_peer_ip) (rate(span_metrics_calls_total{net_peer_ip!=\"\",span_kind=\"SPAN_KIND_SERVER\",service_name=\"nginx-proxy\"}[$time_bucket])))",
+            "expr": "sum(increase(span_metrics_calls_total{http_client_ip!=\"\"}[$time_bucket])) by (http_client_ip) > 0",
             "instant": false,
             "legendFormat": "__auto",
             "range": true,
@@ -3207,7 +3207,7 @@ data:
             "options": {
                 "labelsToFields": true,
                 "reducers": [
-                "mean"
+                "count"
                 ]
             }
             },
