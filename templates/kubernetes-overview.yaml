@@ -3025,120 +3025,53 @@ data:
         "type": "timeseries"
         },
         {
-        "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
+        "id": 42,
+        "type": "timeseries",
+        "title": "Requests from TOP 10 IPs",
+        "description": "",
+        "gridPos": {
+            "x": 0,
+            "y": 57,
+            "h": 8,
+            "w": 12
         },
         "fieldConfig": {
             "defaults": {
-            "color": {
-                "mode": "palette-classic"
-            },
             "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
+                "drawStyle": "line",
+                "lineInterpolation": "linear",
                 "barAlignment": 0,
                 "barWidthFactor": 0.6,
-                "drawStyle": "line",
+                "lineWidth": 1,
                 "fillOpacity": 0,
                 "gradientMode": "none",
-                "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-                },
+                "spanNulls": false,
                 "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
+                "showPoints": "auto",
                 "pointSize": 5,
+                "stacking": {
+                "mode": "none",
+                "group": "A"
+                },
+                "axisPlacement": "auto",
+                "axisLabel": "",
+                "axisColorMode": "text",
+                "axisBorderShow": false,
                 "scaleDistribution": {
                 "type": "linear"
                 },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                "group": "A",
-                "mode": "none"
+                "axisCenteredZero": false,
+                "hideFrom": {
+                "tooltip": false,
+                "viz": false,
+                "legend": false
                 },
                 "thresholdsStyle": {
                 "mode": "off"
                 }
             },
-            "links": [
-                {
-                "targetBlank": true,
-                "title": "Show Details",
-                "url": "https://grafana.{{ .Values.captain_domain }}/d/opentelemetry-apm/apm-overview?orgId=1&refresh=30s&var-app=${__field.labels.service_name}&var-route=All"
-                }
-            ],
-            "mappings": [],
-            "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                {
-                    "color": "green",
-                    "value": null
-                },
-                {
-                    "color": "red",
-                    "value": 80
-                }
-                ]
-            },
-            "unit": "ms"
-            },
-            "overrides": []
-        },
-        "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 49
-        },
-        "id": 35,
-        "options": {
-            "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-            },
-            "tooltip": {
-            "mode": "single",
-            "sort": "none"
-            }
-        },
-        "pluginVersion": "11.4.3",
-        "targets": [
-            {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-            },
-            "editorMode": "code",
-            "expr": "round(avg_over_time(histogram_quantile(0.95,sum by (le, service_name) (rate(span_metrics_duration_milliseconds_bucket{span_kind=\"SPAN_KIND_SERVER\"}[$time_bucket])))[$time_bucket:1m]), 0.1)",
-            "instant": false,
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "A"
-            }
-        ],
-        "title": "P95 Latency",
-        "type": "timeseries"
-        },
-        {
-        "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-        },
-        "description": "",
-        "fieldConfig": {
-            "defaults": {
             "color": {
-                "mode": "thresholds"
+                "mode": "palette-classic"
             },
             "mappings": [],
             "thresholds": {
@@ -3154,37 +3087,6 @@ data:
             },
             "overrides": []
         },
-        "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 57
-        },
-        "id": 42,
-        "options": {
-            "displayMode": "lcd",
-            "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": false
-            },
-            "maxVizHeight": 300,
-            "minVizHeight": 16,
-            "minVizWidth": 8,
-            "namePlacement": "auto",
-            "orientation": "horizontal",
-            "reduceOptions": {
-            "calcs": [
-                "lastNotNull"
-            ],
-            "fields": "",
-            "values": true
-            },
-            "showUnfilled": true,
-            "sizing": "auto",
-            "valueMode": "color"
-        },
         "pluginVersion": "11.4.3",
         "targets": [
             {
@@ -3193,49 +3095,29 @@ data:
                 "uid": "prometheus"
             },
             "editorMode": "code",
-            "expr": "sum(increase(span_metrics_calls_total{http_client_ip!=\"\"}[$time_bucket])) by (http_client_ip) > 0",
+            "expr": "round(avg_over_time((sum by (http_client_ip) (rate(span_metrics_calls_total{http_client_ip!=''}[$time_bucket])) * 60)[$time_bucket:1m]),1)",
             "instant": false,
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
             }
         ],
-        "title": "Requests from TOP 10 IPs",
-        "transformations": [
-            {
-            "id": "reduce",
-            "options": {
-                "labelsToFields": true,
-                "reducers": [
-                "count"
-                ]
-            }
+        "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+        },
+        "options": {
+            "tooltip": {
+            "mode": "single",
+            "sort": "none"
             },
-            {
-            "id": "organize",
-            "options": {
-                "excludeByName": {
-                "Field": true
-                },
-                "includeByName": {},
-                "indexByName": {},
-                "renameByName": {}
+            "legend": {
+            "showLegend": true,
+            "displayMode": "list",
+            "placement": "bottom",
+            "calcs": []
             }
-            },
-            {
-            "id": "sortBy",
-            "options": {
-                "fields": {},
-                "sort": [
-                {
-                    "desc": true,
-                    "field": "Mean"
-                }
-                ]
-            }
-            }
-        ],
-        "type": "bargauge"
+        }
         },
         {
         "datasource": {
