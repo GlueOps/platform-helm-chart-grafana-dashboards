@@ -3227,7 +3227,7 @@ data:
                     "uid": "prometheus"
                 },
                 "editorMode": "code",
-                "expr": "round(avg_over_time((sum by (http_client_ip) (rate(span_metrics_calls_total{http_client_ip!=''}[$time_bucket])) * 60)[$time_bucket:1m]),1)",
+                "expr": "round(avg_over_time(topk(10,(sum by (http_client_ip) (rate(span_metrics_calls_total{http_client_ip!=''}[$time_bucket]))) * 60)[$time_bucket:1m]),1)",
                 "instant": false,
                 "legendFormat": "__auto",
                 "range": true,

@@ -520,15 +520,17 @@ data:
           "type": "piechart"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
+          "id": 11,
+          "type": "bargauge",
+          "title": "Average latency",
+          "gridPos": {
+            "x": 6,
+            "y": 6,
+            "h": 8,
+            "w": 7
           },
           "fieldConfig": {
             "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
@@ -543,41 +545,49 @@ data:
                   }
                 ]
               },
+              "color": {
+                "mode": "thresholds"
+              },
               "unit": "ms"
             },
             "overrides": []
           },
-          "gridPos": {
-            "h": 8,
-            "w": 7,
-            "x": 6,
-            "y": 6
-          },
-          "id": 11,
-          "options": {
-            "displayMode": "lcd",
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": false
+          "transformations": [
+            {
+              "id": "reduce",
+              "options": {
+                "reducers": [
+                  "mean"
+                ],
+                "labelsToFields": true
+              }
             },
-            "maxVizHeight": 300,
-            "minVizHeight": 16,
-            "minVizWidth": 8,
-            "namePlacement": "auto",
-            "orientation": "horizontal",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
-              ],
-              "fields": "",
-              "values": false
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Total": false,
+                  "Field": true,
+                  "http_target": false
+                },
+                "indexByName": {},
+                "renameByName": {},
+                "includeByName": {}
+              }
             },
-            "showUnfilled": true,
-            "sizing": "auto",
-            "valueMode": "color"
-          },
+            {
+              "id": "sortBy",
+              "options": {
+                "fields": {},
+                "sort": [
+                  {
+                    "field": "Mean",
+                    "desc": true
+                  }
+                ]
+              }
+            }
+          ],
           "pluginVersion": "11.4.3",
           "targets": [
             {
@@ -589,13 +599,39 @@ data:
               "exemplar": false,
               "expr": "avg(span_metrics_duration_milliseconds_sum{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}/span_metrics_duration_milliseconds_count{service_name=\"$app\", span_kind=\"SPAN_KIND_SERVER\"}) by (http_target)",
               "instant": false,
-              "legendFormat": "{{`{{http_target}}`}}",
+              "legendFormat": "{{http_target}}",
               "range": true,
               "refId": "A"
             }
           ],
-          "title": "Average latency",
-          "type": "bargauge"
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "options": {
+            "reduceOptions": {
+              "values": true,
+              "calcs": [
+                "mean"
+              ],
+              "fields": ""
+            },
+            "orientation": "horizontal",
+            "legend": {
+              "showLegend": false,
+              "displayMode": "list",
+              "placement": "bottom",
+              "calcs": []
+            },
+            "displayMode": "lcd",
+            "valueMode": "color",
+            "namePlacement": "auto",
+            "showUnfilled": true,
+            "sizing": "auto",
+            "minVizWidth": 8,
+            "minVizHeight": 16,
+            "maxVizHeight": 300
+          }
         },
         {
           "datasource": {
