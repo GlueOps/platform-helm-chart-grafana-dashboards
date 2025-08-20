@@ -1572,16 +1572,18 @@ data:
             "type": "timeseries"
             },
             {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-            },
+            "id": 21,
+            "type": "table",
+            "title": "CPU intensive Apps",
             "description": "",
+            "gridPos": {
+                "x": 0,
+                "y": 10,
+                "h": 7,
+                "w": 24
+            },
             "fieldConfig": {
                 "defaults": {
-                "color": {
-                    "mode": "thresholds"
-                },
                 "custom": {
                     "align": "auto",
                     "cellOptions": {
@@ -1590,13 +1592,6 @@ data:
                     },
                     "inspect": false
                 },
-                "links": [
-                    {
-                    "targetBlank": true,
-                    "title": "CPU intensive",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
-                    }
-                ],
                 "mappings": [],
                 "thresholds": {
                     "mode": "absolute",
@@ -1611,46 +1606,56 @@ data:
                     }
                     ]
                 },
+                "color": {
+                    "mode": "thresholds"
+                },
+                "links": [
+                    {
+                    "targetBlank": true,
+                    "title": "CPU intensive",
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
+                    }
+                ],
                 "unit": "none"
                 },
                 "overrides": []
             },
-            "gridPos": {
-                "h": 7,
-                "w": 24,
-                "x": 0,
-                "y": 10
-            },
-            "id": 21,
-            "options": {
-                "cellHeight": "sm",
-                "displayMode": "lcd",
-                "footer": {
-                "countRows": false,
-                "fields": "",
-                "reducer": [
-                    "sum"
-                ],
-                "show": false
+            "transformations": [
+                {
+                "id": "joinByField",
+                "options": {
+                    "byField": "label_app_kubernetes_io_name",
+                    "mode": "outer"
+                }
                 },
-                "maxVizHeight": 159,
-                "minVizHeight": 21,
-                "minVizWidth": 8,
-                "namePlacement": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                "calcs": [
-                    "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-                },
-                "showHeader": true,
-                "showUnfilled": true,
-                "sizing": "auto",
-                "sortBy": [],
-                "valueMode": "color"
-            },
+                {
+                "id": "organize",
+                "options": {
+                    "excludeByName": {
+                    "Time": true,
+                    "Value #C": false,
+                    "Value #D": false,
+                    "Value #E": false,
+                    "label_app_kubernetes_io_name 2": true,
+                    "label_app_kubernetes_io_name 3": true,
+                    "label_app_kubernetes_io_name 4": true,
+                    "label_app_kubernetes_io_name 5": true
+                    },
+                    "includeByName": {},
+                    "indexByName": {},
+                    "renameByName": {
+                    "Value #A": "CPU Usage",
+                    "Value #B": "CPU Requests",
+                    "Value #C": "CPU Requests %",
+                    "Value #D": "CPU Limits",
+                    "Value #E": "CPU Limits %",
+                    "label_app_kubernetes_io_name": "App",
+                    "label_app_kubernetes_io_name 1": "App",
+                    "label_app_kubernetes_io_name 3": ""
+                    }
+                }
+                }
+            ],
             "pluginVersion": "11.4.3",
             "targets": [
                 {
@@ -1708,55 +1713,57 @@ data:
                 "refId": "E"
                 }
             ],
-            "title": "CPU intensive Apps",
-            "transformations": [
-                {
-                "id": "joinByField",
-                "options": {
-                    "byField": "label_app_kubernetes_io_name",
-                    "mode": "outer"
-                }
-                },
-                {
-                "id": "organize",
-                "options": {
-                    "excludeByName": {
-                    "Time": true,
-                    "Value #C": false,
-                    "Value #D": false,
-                    "Value #E": false,
-                    "label_app_kubernetes_io_name 2": true,
-                    "label_app_kubernetes_io_name 3": true,
-                    "label_app_kubernetes_io_name 4": true,
-                    "label_app_kubernetes_io_name 5": true
-                    },
-                    "includeByName": {},
-                    "indexByName": {},
-                    "renameByName": {
-                    "Value #A": "CPU Usage",
-                    "Value #B": "CPU Requests",
-                    "Value #C": "CPU Requests %",
-                    "Value #D": "CPU Limits",
-                    "Value #E": "CPU Limits %",
-                    "label_app_kubernetes_io_name": "App",
-                    "label_app_kubernetes_io_name 1": "App",
-                    "label_app_kubernetes_io_name 3": ""
-                    }
-                }
-                }
-            ],
-            "type": "table"
-            },
-            {
             "datasource": {
                 "type": "prometheus",
                 "uid": "prometheus"
             },
+            "options": {
+                "showHeader": true,
+                "cellHeight": "sm",
+                "footer": {
+                "show": false,
+                "reducer": [
+                    "sum"
+                ],
+                "countRows": false,
+                "fields": ""
+                },
+                "displayMode": "lcd",
+                "maxVizHeight": 159,
+                "minVizHeight": 21,
+                "minVizWidth": 8,
+                "namePlacement": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                "calcs": [
+                    "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+                },
+                "showUnfilled": true,
+                "sizing": "auto",
+                "sortBy": [
+                {
+                    "displayName": "CPU Requests %",
+                    "desc": true
+                }
+                ],
+                "valueMode": "color"
+            }
+            },
+            {
+            "id": 23,
+            "type": "table",
+            "title": "Memory Intensive Apps",
+            "gridPos": {
+                "x": 0,
+                "y": 17,
+                "h": 7,
+                "w": 24
+            },
             "fieldConfig": {
                 "defaults": {
-                "color": {
-                    "mode": "thresholds"
-                },
                 "custom": {
                     "align": "auto",
                     "cellOptions": {
@@ -1764,13 +1771,6 @@ data:
                     },
                     "inspect": false
                 },
-                "links": [
-                    {
-                    "targetBlank": true,
-                    "title": "memory",
-                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
-                    }
-                ],
                 "mappings": [],
                 "thresholds": {
                     "mode": "absolute",
@@ -1781,6 +1781,16 @@ data:
                     }
                     ]
                 },
+                "color": {
+                    "mode": "thresholds"
+                },
+                "links": [
+                    {
+                    "targetBlank": true,
+                    "title": "memory",
+                    "url": "https://grafana.{{ .Values.captain_domain }}/d/ce60j8f8umhhcc/kubernetes-pod-overview?orgId=1&refresh=10s&var-cluster=test&${namespace:queryparam}&var-workload=${__data.fields.App}"
+                    }
+                ],
                 "unit": "bytes"
                 },
                 "overrides": [
@@ -1798,41 +1808,51 @@ data:
                 }
                 ]
             },
-            "gridPos": {
-                "h": 7,
-                "w": 24,
-                "x": 0,
-                "y": 17
-            },
-            "id": 23,
-            "options": {
-                "cellHeight": "sm",
-                "displayMode": "lcd",
-                "footer": {
-                "countRows": false,
-                "fields": "",
-                "reducer": [
-                    "sum"
-                ],
-                "show": false
+            "transformations": [
+                {
+                "id": "joinByField",
+                "options": {
+                    "byField": "label_app_kubernetes_io_name",
+                    "mode": "outer"
+                }
                 },
-                "maxVizHeight": 300,
-                "minVizHeight": 16,
-                "minVizWidth": 8,
-                "namePlacement": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                "calcs": [
-                    "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-                },
-                "showHeader": true,
-                "showUnfilled": true,
-                "sizing": "auto",
-                "valueMode": "color"
-            },
+                {
+                "id": "organize",
+                "options": {
+                    "excludeByName": {
+                    "Time": true,
+                    "Time 1": true,
+                    "Time 2": true,
+                    "Time 3": true,
+                    "Time 4": true
+                    },
+                    "includeByName": {},
+                    "indexByName": {
+                    "Time 1": 1,
+                    "Time 2": 2,
+                    "Time 3": 3,
+                    "Time 4": 4,
+                    "Time 5": 5,
+                    "Value #A": 6,
+                    "Value #B": 7,
+                    "Value #C": 8,
+                    "Value #D": 9,
+                    "Value #E": 10,
+                    "label_app_kubernetes_io_name": 0
+                    },
+                    "renameByName": {
+                    "Time 2": "",
+                    "Time 5": "",
+                    "Value #A": "Memory Usage",
+                    "Value #B": "Memory Request",
+                    "Value #C": "Memory Requests %",
+                    "Value #D": "Memory Limits",
+                    "Value #E": "Memory Limits %",
+                    "label_app_kubernetes_io_name": "App"
+                    }
+                }
+                }
+            ],
             "pluginVersion": "11.4.3",
             "targets": [
                 {
@@ -1930,53 +1950,44 @@ data:
                 "refId": "H"
                 }
             ],
-            "title": "Memory Intensive Apps",
-            "transformations": [
-                {
-                "id": "joinByField",
-                "options": {
-                    "byField": "label_app_kubernetes_io_name",
-                    "mode": "outer"
-                }
+            "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+            },
+            "options": {
+                "showHeader": true,
+                "cellHeight": "sm",
+                "footer": {
+                "show": false,
+                "reducer": [
+                    "sum"
+                ],
+                "countRows": false,
+                "fields": ""
                 },
+                "displayMode": "lcd",
+                "maxVizHeight": 300,
+                "minVizHeight": 16,
+                "minVizWidth": 8,
+                "namePlacement": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                "calcs": [
+                    "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+                },
+                "showUnfilled": true,
+                "sizing": "auto",
+                "valueMode": "color",
+                "sortBy": [
                 {
-                "id": "organize",
-                "options": {
-                    "excludeByName": {
-                    "Time": true,
-                    "Time 1": true,
-                    "Time 2": true,
-                    "Time 3": true,
-                    "Time 4": true
-                    },
-                    "includeByName": {},
-                    "indexByName": {
-                    "Time 1": 1,
-                    "Time 2": 2,
-                    "Time 3": 3,
-                    "Time 4": 4,
-                    "Time 5": 5,
-                    "Value #A": 6,
-                    "Value #B": 7,
-                    "Value #C": 8,
-                    "Value #D": 9,
-                    "Value #E": 10,
-                    "label_app_kubernetes_io_name": 0
-                    },
-                    "renameByName": {
-                    "Time 2": "",
-                    "Time 5": "",
-                    "Value #A": "Memory Usage",
-                    "Value #B": "Memory Request",
-                    "Value #C": "Memory Requests %",
-                    "Value #D": "Memory Limits",
-                    "Value #E": "Memory Limits %",
-                    "label_app_kubernetes_io_name": "App"
-                    }
+                    "displayName": "Memory Requests %",
+                    "desc": true
                 }
-                }
-            ],
-            "type": "table"
+                ]
+            }
             },
             {
             "datasource": {
