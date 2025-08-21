@@ -32,55 +32,53 @@ data:
       "links": [],
       "panels": [
         {
-          "datasource": {
-            "type": "prometheus",
-             "uid": "prometheus"
+          "id": 1,
+          "type": "timeseries",
+          "title": "CPU Usage",
+          "gridPos": {
+            "x": 0,
+            "y": 0,
+            "h": 6,
+            "w": 9
           },
           "fieldConfig": {
             "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
               "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
+                "drawStyle": "line",
+                "lineInterpolation": "linear",
                 "barAlignment": 0,
                 "barWidthFactor": 0.6,
-                "drawStyle": "line",
+                "lineWidth": 1,
                 "fillOpacity": 10,
                 "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
+                "spanNulls": true,
                 "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
+                "showPoints": "never",
                 "pointSize": 5,
+                "stacking": {
+                  "mode": "none",
+                  "group": "A"
+                },
+                "axisPlacement": "auto",
+                "axisLabel": "",
+                "axisColorMode": "text",
+                "axisBorderShow": false,
                 "scaleDistribution": {
                   "type": "linear"
                 },
-                "showPoints": "never",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
+                "axisCenteredZero": false,
+                "hideFrom": {
+                  "tooltip": false,
+                  "viz": false,
+                  "legend": false
                 },
                 "thresholdsStyle": {
                   "mode": "off"
                 }
               },
-              "links": [
-                {
-                  "targetBlank": true,
-                  "title": "Logs",
-                  "url": "https://grafana.{{ .Values.captain_domain }}/a/grafana-lokiexplore-app/explore/container/${__field.labels.container}/logs?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&var-fields=&var-levels=&var-metadata=&var-patterns=&var-lineFilterV2=&var-lineFilters=&urlColumns=[]&visualizationType=\"logs\"&displayedFields=[]&timezone=browser&var-all-fields=&sortOrder=\"Descending\"&wrapLogMessage=false"
-                }
-              ],
+              "color": {
+                "mode": "palette-classic"
+              },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
@@ -94,7 +92,14 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "links": [
+                {
+                  "targetBlank": true,
+                  "title": "Logs",
+                  "url": "https://grafana.{{ .Values.captain_domain }}/a/grafana-lokiexplore-app/explore/container/${__field.labels.container}/logs?from=now-24h&to=now&var-ds=P8E80F9AEF21F6940&var-filters=container|=|${__field.labels.container}&patterns=[]&var-fields=&var-levels=&var-metadata=&var-patterns=&var-lineFilterV2=&var-lineFilters=&urlColumns=[]&visualizationType=\"logs\"&displayedFields=[]&timezone=browser&var-all-fields=&sortOrder=\"Descending\"&wrapLogMessage=false"
+                }
+              ]
             },
             "overrides": [
               {
@@ -146,53 +151,8 @@ data:
                     }
                   }
                 ]
-              },
-              {
-                "__systemRef": "hideSeriesFrom",
-                "matcher": {
-                  "id": "byNames",
-                  "options": {
-                    "mode": "exclude",
-                    "names": [
-                      "generate-fake-load-prod"
-                    ],
-                    "prefix": "All except:",
-                    "readOnly": true
-                  }
-                },
-                "properties": [
-                  {
-                    "id": "custom.hideFrom",
-                    "value": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": true
-                    }
-                  }
-                ]
               }
             ]
-          },
-          "gridPos": {
-            "h": 6,
-            "w": 9,
-            "x": 0,
-            "y": 0
-          },
-          "id": 1,
-          "interval": "1m",
-          "options": {
-            "legend": {
-              "asTable": true,
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
           },
           "pluginVersion": "11.4.3",
           "targets": [
@@ -226,8 +186,24 @@ data:
               "refId": "C"
             }
           ],
-          "title": "CPU Usage",
-          "type": "timeseries"
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "interval": "1m",
+          "options": {
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            },
+            "legend": {
+              "showLegend": true,
+              "displayMode": "list",
+              "placement": "bottom",
+              "calcs": [],
+              "asTable": true
+            }
+          }
         },
         {
           "datasource": {
