@@ -7,3167 +7,3167 @@ metadata:
 data:
   #https://grafana.com/grafana/dashboards/14584-argocd/
   grafana-dashboard-thanos-operational.json: |
-     {
-      "annotations": {
-        "list": [
+      {
+        "annotations": {
+          "list": [
+            {
+              "builtIn": 1,
+              "datasource": {
+                "type": "grafana",
+                "uid": "-- Grafana --"
+              },
+              "enable": true,
+              "hide": true,
+              "iconColor": "rgba(0, 211, 255, 1)",
+              "name": "Annotations & Alerts",
+              "type": "dashboard"
+            }
+          ]
+        },
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "id": 5,
+        "links": [],
+        "panels": [
           {
-            "builtIn": 1,
+            "collapsed": false,
+            "gridPos": {
+              "h": 1,
+              "w": 24,
+              "x": 0,
+              "y": 0
+            },
+            "id": 21,
+            "panels": [],
+            "title": "Instant Query",
+            "type": "row"
+          },
+          {
             "datasource": {
-              "type": "grafana",
-              "uid": "-- Grafana --"
+              "uid": "$datasource"
             },
-            "enable": true,
-            "hide": true,
-            "iconColor": "rgba(0, 211, 255, 1)",
-            "name": "Annotations & Alerts",
-            "type": "dashboard"
+            "description": "Shows rate of requests against /query for the given time.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/1../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#EAB839",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/2../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#37872D",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/3../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E0B400",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/4../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#1F60C4",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/5../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 0,
+              "y": 1
+            },
+            "id": 1,
+            "links": [
+              {
+                "title": "Thanos / Query",
+                "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job, handler, code) (rate(http_requests_total{handler=\"query\"}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{job}}`}} {{`{{handler}}`}} {{`{{code}}`}}",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Requests Rate",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows ratio of errors compared to the total number of handled requests against /query.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "percentunit"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "error"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E24D42",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 8,
+              "y": 1
+            },
+            "id": 2,
+            "links": [
+              {
+                "title": "Thanos / Query",
+                "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job, code) (rate(http_requests_total{handler=\"query\",code=~\"5..\"}[$interval])) / ignoring (code) group_left() sum by (job) (rate(http_requests_total{handler=\"query\"}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Requests Errors",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows how long has it taken to handle requests.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "line+area"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "transparent",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": 0.5
+                    },
+                    {
+                      "color": "red",
+                      "value": 1
+                    }
+                  ]
+                },
+                "unit": "s"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 16,
+              "y": 1
+            },
+            "id": 3,
+            "links": [
+              {
+                "title": "Thanos / Query",
+                "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "histogram_quantile(0.99, sum by (job, le) (rate(http_request_duration_seconds_bucket{handler=\"query\"}[$interval])))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{job}}`}} P99",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Latency 99th Percentile",
+            "type": "timeseries"
+          },
+          {
+            "collapsed": false,
+            "gridPos": {
+              "h": 1,
+              "w": 24,
+              "x": 0,
+              "y": 8
+            },
+            "id": 22,
+            "panels": [],
+            "title": "Range Query",
+            "type": "row"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows rate of requests against /query_range for the given time range.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/1../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#EAB839",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/2../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#37872D",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/3../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E0B400",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/4../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#1F60C4",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/5../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 0,
+              "y": 9
+            },
+            "id": 4,
+            "links": [
+              {
+                "title": "Thanos / Query",
+                "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job, handler, code) (rate(http_requests_total{handler=\"query_range\"}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{job}}`}} {{`{{handler}}`}} {{`{{code}}`}}",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Requests Rate",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows ratio of errors compared to the total number of handled requests against /query_range.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "percentunit"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "error"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E24D42",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 8,
+              "y": 9
+            },
+            "id": 5,
+            "links": [
+              {
+                "title": "Thanos / Query",
+                "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job, code) (rate(http_requests_total{handler=\"query_range\",code=~\"5..\"}[$interval])) / ignoring (code) group_left() sum by (job) (rate(http_requests_total{handler=\"query_range\"}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Requests Errors",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows how long has it taken to handle requests.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "line+area"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "transparent",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": 0.5
+                    },
+                    {
+                      "color": "red",
+                      "value": 1
+                    }
+                  ]
+                },
+                "unit": "s"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 16,
+              "y": 9
+            },
+            "id": 6,
+            "links": [
+              {
+                "title": "Thanos / Query",
+                "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "histogram_quantile(0.99, sum by (job, le) (rate(http_request_duration_seconds_bucket{handler=\"query_range\"}[$interval])))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{job}}`}} P99",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Latency 99th Percentile",
+            "type": "timeseries"
+          },
+          {
+            "collapsed": false,
+            "gridPos": {
+              "h": 1,
+              "w": 24,
+              "x": 0,
+              "y": 16
+            },
+            "id": 23,
+            "panels": [],
+            "title": "Store",
+            "type": "row"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows rate of handled Unary gRPC requests from queriers.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Aborted/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#EAB839",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/AlreadyExists/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#37872D",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/FailedPrecondition/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E0B400",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Unimplemented/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E0B400",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/InvalidArgument/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#1F60C4",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/NotFound/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#1F60C4",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/PermissionDenied/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#1F60C4",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Unauthenticated/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#1F60C4",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Canceled/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/DataLoss/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/DeadlineExceeded/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Internal/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/OutOfRange/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/ResourceExhausted/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Unavailable/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Unknown/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/OK/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#37872D",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "error"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 0,
+              "y": 17
+            },
+            "id": 7,
+            "links": [
+              {
+                "title": "Thanos / Store",
+                "url": "dashboard/db/thanos-store?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job, grpc_method, grpc_code) (rate(grpc_server_handled_total{grpc_type=\"unary\"}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{job}}`}} {{`{{grpc_method}}`}} {{`{{grpc_code}}`}}",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "gRPC (Unary) Rate",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows ratio of errors compared to the total number of handled requests from queriers.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "percentunit"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "error"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E24D42",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 8,
+              "y": 17
+            },
+            "id": 8,
+            "links": [
+              {
+                "title": "Thanos / Store",
+                "url": "dashboard/db/thanos-store?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job, grpc_code) (rate(grpc_server_handled_total{grpc_code=~\"Unknown|ResourceExhausted|Internal|Unavailable|DataLoss\",grpc_type=\"unary\"}[$interval])) / ignoring (grpc_code) group_left() sum by (job) (rate(grpc_server_handled_total{grpc_type=\"unary\"}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "gRPC (Unary) Errors",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows how long has it taken to handle requests from queriers.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "line+area"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "transparent",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": 0.5
+                    },
+                    {
+                      "color": "red",
+                      "value": 1
+                    }
+                  ]
+                },
+                "unit": "s"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 16,
+              "y": 17
+            },
+            "id": 9,
+            "links": [
+              {
+                "title": "Thanos / Store",
+                "url": "dashboard/db/thanos-store?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "histogram_quantile(0.99, sum by (job, le) (rate(grpc_server_handling_seconds_bucket{grpc_type=\"unary\"}[$interval])))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{job}}`}} P99",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "gRPC Latency 99th Percentile",
+            "type": "timeseries"
+          },
+          {
+            "collapsed": false,
+            "gridPos": {
+              "h": 1,
+              "w": 24,
+              "x": 0,
+              "y": 24
+            },
+            "id": 24,
+            "panels": [],
+            "title": "Sidecar",
+            "type": "row"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows rate of handled Unary gRPC requests from queriers.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Aborted/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#EAB839",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/AlreadyExists/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#37872D",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/FailedPrecondition/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E0B400",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Unimplemented/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E0B400",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/InvalidArgument/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#1F60C4",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/NotFound/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#1F60C4",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/PermissionDenied/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#1F60C4",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Unauthenticated/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#1F60C4",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Canceled/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/DataLoss/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/DeadlineExceeded/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Internal/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/OutOfRange/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/ResourceExhausted/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Unavailable/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/Unknown/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/OK/"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#37872D",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "error"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 0,
+              "y": 25
+            },
+            "id": 10,
+            "links": [
+              {
+                "title": "Thanos / Sidecar",
+                "url": "dashboard/db/thanos-sidecar?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job, grpc_method, grpc_code) (rate(grpc_server_handled_total{grpc_type=\"unary\"}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{job}}`}} {{`{{grpc_method}}`}} {{`{{grpc_code}}`}}",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "gRPC (Unary) Rate",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows ratio of errors compared to the total number of handled requests from queriers.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "percentunit"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "error"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E24D42",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 8,
+              "y": 25
+            },
+            "id": 11,
+            "links": [
+              {
+                "title": "Thanos / Sidecar",
+                "url": "dashboard/db/thanos-sidecar?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job, grpc_code) (rate(grpc_server_handled_total{grpc_code=~\"Unknown|ResourceExhausted|Internal|Unavailable|DataLoss\",grpc_type=\"unary\"}[$interval])) / ignoring (grpc_code) group_left() sum by (job) (rate(grpc_server_handled_total{grpc_type=\"unary\"}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "gRPC (Unary) Errors",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows how long has it taken to handle requests from queriers, in quantiles.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "line+area"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "transparent"
+                    },
+                    {
+                      "color": "orange",
+                      "value": 0.5
+                    },
+                    {
+                      "color": "red",
+                      "value": 1
+                    }
+                  ]
+                },
+                "unit": "s"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 16,
+              "y": 25
+            },
+            "id": 12,
+            "links": [
+              {
+                "title": "Thanos / Sidecar",
+                "url": "dashboard/db/thanos-sidecar?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "histogram_quantile(0.99, sum by (job, le) (rate(grpc_server_handling_seconds_bucket{grpc_type=\"unary\"}[$interval])))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{job}}`}} P99",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "gRPC (Unary) Latency 99th Percentile",
+            "type": "timeseries"
+          },
+          {
+            "collapsed": false,
+            "gridPos": {
+              "h": 1,
+              "w": 24,
+              "x": 0,
+              "y": 32
+            },
+            "id": 25,
+            "panels": [],
+            "title": "Receive",
+            "type": "row"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows rate of incoming requests.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/1../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#EAB839",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/2../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#37872D",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/3../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E0B400",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/4../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#1F60C4",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byRegexp",
+                    "options": "/5../"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#C4162A",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 0,
+              "y": 33
+            },
+            "id": 13,
+            "links": [
+              {
+                "title": "Thanos / Receive",
+                "url": "dashboard/db/thanos-receive?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job, handler, code) (rate(http_requests_total{handler=\"receive\"}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{job}}`}} {{`{{handler}}`}} {{`{{code}}`}}",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Incoming Requests Rate",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows ratio of errors compared to the total number of handled incoming requests.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "percentunit"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "error"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E24D42",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 8,
+              "y": 33
+            },
+            "id": 14,
+            "links": [
+              {
+                "title": "Thanos / Receive",
+                "url": "dashboard/db/thanos-receive?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job, code) (rate(http_requests_total{handler=\"receive\",code=~\"5..\"}[$interval])) / ignoring (code) group_left() sum by (job) (rate(http_requests_total{handler=\"receive\"}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Incoming Requests Errors",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows how long has it taken to handle incoming requests.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "line+area"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "transparent"
+                    },
+                    {
+                      "color": "orange",
+                      "value": 0.5
+                    },
+                    {
+                      "color": "red",
+                      "value": 1
+                    }
+                  ]
+                },
+                "unit": "s"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 16,
+              "y": 33
+            },
+            "id": 15,
+            "links": [
+              {
+                "title": "Thanos / Receive",
+                "url": "dashboard/db/thanos-receive?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "histogram_quantile(0.99, sum by (job, le) (rate(http_request_duration_seconds_bucket{handler=\"receive\"}[$interval])))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{job}}`}} P99",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Incoming Requests Latency 99th Percentile",
+            "type": "timeseries"
+          },
+          {
+            "collapsed": false,
+            "gridPos": {
+              "h": 1,
+              "w": 24,
+              "x": 0,
+              "y": 40
+            },
+            "id": 26,
+            "panels": [],
+            "title": "Rule",
+            "type": "row"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows rate of alerts that successfully sent to alert manager.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 0,
+              "y": 41
+            },
+            "id": 16,
+            "links": [
+              {
+                "title": "Thanos / Rule",
+                "url": "dashboard/db/thanos-rule?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job, alertmanager) (rate(thanos_alert_sender_alerts_sent_total{}[$__rate_interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{alertmanager}}`}}",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Alert Sent Rate",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows ratio of errors compared to the total number of sent alerts.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "percentunit"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "error"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E24D42",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 8,
+              "y": 41
+            },
+            "id": 17,
+            "links": [
+              {
+                "title": "Thanos / Rule",
+                "url": "dashboard/db/thanos-rule?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job) (rate(thanos_alert_sender_errors_total{}[$interval])) / sum by (job) (rate(thanos_alert_sender_alerts_sent_total{}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "error",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Alert Sent Errors",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows how long has it taken to send alerts to alert manager.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "line+area"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "transparent"
+                    },
+                    {
+                      "color": "orange",
+                      "value": 0.5
+                    },
+                    {
+                      "color": "red",
+                      "value": 1
+                    }
+                  ]
+                },
+                "unit": "s"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 8,
+              "x": 16,
+              "y": 41
+            },
+            "id": 18,
+            "links": [
+              {
+                "title": "Thanos / Rule",
+                "url": "dashboard/db/thanos-rule?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "histogram_quantile(0.99, sum by (job, le) (rate(thanos_alert_sender_latency_seconds_bucket{}[$interval])))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "{{`{{job}}`}} P99",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Alert Sent Duration",
+            "type": "timeseries"
+          },
+          {
+            "collapsed": false,
+            "gridPos": {
+              "h": 1,
+              "w": 24,
+              "x": 0,
+              "y": 48
+            },
+            "id": 27,
+            "panels": [],
+            "title": "Compact",
+            "type": "row"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows rate of execution for compactions against blocks that are stored in the bucket.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 0,
+              "y": 49
+            },
+            "id": 19,
+            "links": [
+              {
+                "title": "Thanos / Compact",
+                "url": "dashboard/db/thanos-compact?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job) (rate(thanos_compact_group_compactions_total{}[$__rate_interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "compaction {{`{{job}}`}}",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Compaction Rate",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "uid": "$datasource"
+            },
+            "description": "Shows ratio of errors compared to the total number of executed compactions against blocks that are stored in the bucket.",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 100,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 0,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "normal"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "percentunit"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "error"
+                  },
+                  "properties": [
+                    {
+                      "id": "color",
+                      "value": {
+                        "fixedColor": "#E24D42",
+                        "mode": "fixed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 12,
+              "y": 49
+            },
+            "id": 20,
+            "links": [
+              {
+                "title": "Thanos / Compact",
+                "url": "dashboard/db/thanos-compact?$__url_time_range&$__all_variables"
+              }
+            ],
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.4.3",
+            "targets": [
+              {
+                "datasource": {
+                  "uid": "$datasource"
+                },
+                "expr": "sum by (job) (rate(thanos_compact_group_compactions_failures_total{}[$interval])) / sum by (job) (rate(thanos_compact_group_compactions_total{}[$interval]))",
+                "format": "time_series",
+                "intervalFactor": 2,
+                "legendFormat": "error",
+                "refId": "A",
+                "step": 10
+              }
+            ],
+            "title": "Compaction Errors",
+            "type": "timeseries"
           }
-        ]
-      },
-      "editable": true,
-      "fiscalYearStartMonth": 0,
-      "graphTooltip": 0,
-      "id": 5,
-      "links": [],
-      "panels": [
-        {
-          "collapsed": false,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 0
-          },
-          "id": 21,
-          "panels": [],
-          "title": "Instant Query",
-          "type": "row"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows rate of requests against /query for the given time.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/1../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#EAB839",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/2../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#37872D",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/3../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E0B400",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/4../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#1F60C4",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/5../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 0,
-            "y": 1
-          },
-          "id": 1,
-          "links": [
+        ],
+        "preload": false,
+        "refresh": "10s",
+        "schemaVersion": 40,
+        "tags": [
+          "thanos-mixin"
+        ],
+        "templating": {
+          "list": [
             {
-              "title": "Thanos / Query",
-              "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
+              "current": {
+                "text": "default",
+                "value": "default"
+              },
+              "name": "datasource",
+              "options": [],
+              "query": "prometheus",
+              "refresh": 1,
+              "regex": "",
+              "type": "datasource"
             },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
             {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job, handler, code) (rate(http_requests_total{handler=\"query\"}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{job}}`}} {{`{{handler}}`}} {{`{{code}}`}}",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Requests Rate",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows ratio of errors compared to the total number of handled requests against /query.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percentunit"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "error"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E24D42",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 8,
-            "y": 1
-          },
-          "id": 2,
-          "links": [
-            {
-              "title": "Thanos / Query",
-              "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job, code) (rate(http_requests_total{handler=\"query\",code=~\"5..\"}[$interval])) / ignoring (code) group_left() sum by (job) (rate(http_requests_total{handler=\"query\"}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Requests Errors",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows how long has it taken to handle requests.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "line+area"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "transparent",
-                    "value": null
-                  },
-                  {
-                    "color": "orange",
-                    "value": 0.5
-                  },
-                  {
-                    "color": "red",
-                    "value": 1
-                  }
-                ]
-              },
-              "unit": "s"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 16,
-            "y": 1
-          },
-          "id": 3,
-          "links": [
-            {
-              "title": "Thanos / Query",
-              "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "histogram_quantile(0.99, sum by (job, le) (rate(http_request_duration_seconds_bucket{handler=\"query\"}[$interval])))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{job}}`}} P99",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Latency 99th Percentile",
-          "type": "timeseries"
-        },
-        {
-          "collapsed": false,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 8
-          },
-          "id": 22,
-          "panels": [],
-          "title": "Range Query",
-          "type": "row"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows rate of requests against /query_range for the given time range.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/1../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#EAB839",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/2../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#37872D",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/3../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E0B400",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/4../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#1F60C4",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/5../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 0,
-            "y": 9
-          },
-          "id": 4,
-          "links": [
-            {
-              "title": "Thanos / Query",
-              "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job, handler, code) (rate(http_requests_total{handler=\"query_range\"}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{job}}`}} {{`{{handler}}`}} {{`{{code}}`}}",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Requests Rate",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows ratio of errors compared to the total number of handled requests against /query_range.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percentunit"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "error"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E24D42",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 8,
-            "y": 9
-          },
-          "id": 5,
-          "links": [
-            {
-              "title": "Thanos / Query",
-              "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job, code) (rate(http_requests_total{handler=\"query_range\",code=~\"5..\"}[$interval])) / ignoring (code) group_left() sum by (job) (rate(http_requests_total{handler=\"query_range\"}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Requests Errors",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows how long has it taken to handle requests.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "line+area"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "transparent",
-                    "value": null
-                  },
-                  {
-                    "color": "orange",
-                    "value": 0.5
-                  },
-                  {
-                    "color": "red",
-                    "value": 1
-                  }
-                ]
-              },
-              "unit": "s"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 16,
-            "y": 9
-          },
-          "id": 6,
-          "links": [
-            {
-              "title": "Thanos / Query",
-              "url": "dashboard/db/thanos-query?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "histogram_quantile(0.99, sum by (job, le) (rate(http_request_duration_seconds_bucket{handler=\"query_range\"}[$interval])))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{job}}`}} P99",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Latency 99th Percentile",
-          "type": "timeseries"
-        },
-        {
-          "collapsed": false,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 16
-          },
-          "id": 23,
-          "panels": [],
-          "title": "Store",
-          "type": "row"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows rate of handled Unary gRPC requests from queriers.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Aborted/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#EAB839",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/AlreadyExists/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#37872D",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/FailedPrecondition/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E0B400",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Unimplemented/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E0B400",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/InvalidArgument/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#1F60C4",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/NotFound/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#1F60C4",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/PermissionDenied/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#1F60C4",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Unauthenticated/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#1F60C4",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Canceled/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/DataLoss/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/DeadlineExceeded/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Internal/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/OutOfRange/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/ResourceExhausted/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Unavailable/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Unknown/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/OK/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#37872D",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "error"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 0,
-            "y": 17
-          },
-          "id": 7,
-          "links": [
-            {
-              "title": "Thanos / Store",
-              "url": "dashboard/db/thanos-store?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job, grpc_method, grpc_code) (rate(grpc_server_handled_total{grpc_type=\"unary\"}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{job}}`}} {{`{{grpc_method}}`}} {{`{{grpc_code}}`}}",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "gRPC (Unary) Rate",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows ratio of errors compared to the total number of handled requests from queriers.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percentunit"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "error"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E24D42",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 8,
-            "y": 17
-          },
-          "id": 8,
-          "links": [
-            {
-              "title": "Thanos / Store",
-              "url": "dashboard/db/thanos-store?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job, grpc_code) (rate(grpc_server_handled_total{grpc_code=~\"Unknown|ResourceExhausted|Internal|Unavailable|DataLoss\",grpc_type=\"unary\"}[$interval])) / ignoring (grpc_code) group_left() sum by (job) (rate(grpc_server_handled_total{grpc_type=\"unary\"}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "gRPC (Unary) Errors",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows how long has it taken to handle requests from queriers.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "line+area"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "transparent",
-                    "value": null
-                  },
-                  {
-                    "color": "orange",
-                    "value": 0.5
-                  },
-                  {
-                    "color": "red",
-                    "value": 1
-                  }
-                ]
-              },
-              "unit": "s"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 16,
-            "y": 17
-          },
-          "id": 9,
-          "links": [
-            {
-              "title": "Thanos / Store",
-              "url": "dashboard/db/thanos-store?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "histogram_quantile(0.99, sum by (job, le) (rate(grpc_server_handling_seconds_bucket{grpc_type=\"unary\"}[$interval])))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{job}}`}} P99",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "gRPC Latency 99th Percentile",
-          "type": "timeseries"
-        },
-        {
-          "collapsed": false,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 24
-          },
-          "id": 24,
-          "panels": [],
-          "title": "Sidecar",
-          "type": "row"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows rate of handled Unary gRPC requests from queriers.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Aborted/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#EAB839",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/AlreadyExists/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#37872D",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/FailedPrecondition/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E0B400",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Unimplemented/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E0B400",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/InvalidArgument/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#1F60C4",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/NotFound/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#1F60C4",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/PermissionDenied/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#1F60C4",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Unauthenticated/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#1F60C4",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Canceled/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/DataLoss/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/DeadlineExceeded/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Internal/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/OutOfRange/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/ResourceExhausted/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Unavailable/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/Unknown/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/OK/"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#37872D",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "error"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 0,
-            "y": 25
-          },
-          "id": 10,
-          "links": [
-            {
-              "title": "Thanos / Sidecar",
-              "url": "dashboard/db/thanos-sidecar?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job, grpc_method, grpc_code) (rate(grpc_server_handled_total{grpc_type=\"unary\"}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{job}}`}} {{`{{grpc_method}}`}} {{`{{grpc_code}}`}}",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "gRPC (Unary) Rate",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows ratio of errors compared to the total number of handled requests from queriers.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percentunit"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "error"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E24D42",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 8,
-            "y": 25
-          },
-          "id": 11,
-          "links": [
-            {
-              "title": "Thanos / Sidecar",
-              "url": "dashboard/db/thanos-sidecar?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job, grpc_code) (rate(grpc_server_handled_total{grpc_code=~\"Unknown|ResourceExhausted|Internal|Unavailable|DataLoss\",grpc_type=\"unary\"}[$interval])) / ignoring (grpc_code) group_left() sum by (job) (rate(grpc_server_handled_total{grpc_type=\"unary\"}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "gRPC (Unary) Errors",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows how long has it taken to handle requests from queriers, in quantiles.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "line+area"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "transparent"
-                  },
-                  {
-                    "color": "orange",
-                    "value": 0.5
-                  },
-                  {
-                    "color": "red",
-                    "value": 1
-                  }
-                ]
-              },
-              "unit": "s"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 16,
-            "y": 25
-          },
-          "id": 12,
-          "links": [
-            {
-              "title": "Thanos / Sidecar",
-              "url": "dashboard/db/thanos-sidecar?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "histogram_quantile(0.99, sum by (job, le) (rate(grpc_server_handling_seconds_bucket{grpc_type=\"unary\"}[$interval])))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{job}}`}} P99",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "gRPC (Unary) Latency 99th Percentile",
-          "type": "timeseries"
-        },
-        {
-          "collapsed": false,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 32
-          },
-          "id": 25,
-          "panels": [],
-          "title": "Receive",
-          "type": "row"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows rate of incoming requests.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/1../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#EAB839",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/2../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#37872D",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/3../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E0B400",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/4../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#1F60C4",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": "/5../"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#C4162A",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 0,
-            "y": 33
-          },
-          "id": 13,
-          "links": [
-            {
-              "title": "Thanos / Receive",
-              "url": "dashboard/db/thanos-receive?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job, handler, code) (rate(http_requests_total{handler=\"receive\"}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{job}}`}} {{`{{handler}}`}} {{`{{code}}`}}",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Incoming Requests Rate",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows ratio of errors compared to the total number of handled incoming requests.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percentunit"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "error"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E24D42",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 8,
-            "y": 33
-          },
-          "id": 14,
-          "links": [
-            {
-              "title": "Thanos / Receive",
-              "url": "dashboard/db/thanos-receive?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job, code) (rate(http_requests_total{handler=\"receive\",code=~\"5..\"}[$interval])) / ignoring (code) group_left() sum by (job) (rate(http_requests_total{handler=\"receive\"}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Incoming Requests Errors",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows how long has it taken to handle incoming requests.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "line+area"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "transparent"
-                  },
-                  {
-                    "color": "orange",
-                    "value": 0.5
-                  },
-                  {
-                    "color": "red",
-                    "value": 1
-                  }
-                ]
-              },
-              "unit": "s"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 16,
-            "y": 33
-          },
-          "id": 15,
-          "links": [
-            {
-              "title": "Thanos / Receive",
-              "url": "dashboard/db/thanos-receive?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "histogram_quantile(0.99, sum by (job, le) (rate(http_request_duration_seconds_bucket{handler=\"receive\"}[$interval])))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{job}}`}} P99",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Incoming Requests Latency 99th Percentile",
-          "type": "timeseries"
-        },
-        {
-          "collapsed": false,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 40
-          },
-          "id": 26,
-          "panels": [],
-          "title": "Rule",
-          "type": "row"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows rate of alerts that successfully sent to alert manager.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 0,
-            "y": 41
-          },
-          "id": 16,
-          "links": [
-            {
-              "title": "Thanos / Rule",
-              "url": "dashboard/db/thanos-rule?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job, alertmanager) (rate(thanos_alert_sender_alerts_sent_total{}[$__rate_interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{alertmanager}}`}}",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Alert Sent Rate",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows ratio of errors compared to the total number of sent alerts.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percentunit"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "error"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E24D42",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 8,
-            "y": 41
-          },
-          "id": 17,
-          "links": [
-            {
-              "title": "Thanos / Rule",
-              "url": "dashboard/db/thanos-rule?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job) (rate(thanos_alert_sender_errors_total{}[$interval])) / sum by (job) (rate(thanos_alert_sender_alerts_sent_total{}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "error",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Alert Sent Errors",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows how long has it taken to send alerts to alert manager.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 10,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "line+area"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "transparent"
-                  },
-                  {
-                    "color": "orange",
-                    "value": 0.5
-                  },
-                  {
-                    "color": "red",
-                    "value": 1
-                  }
-                ]
-              },
-              "unit": "s"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 8,
-            "x": 16,
-            "y": 41
-          },
-          "id": 18,
-          "links": [
-            {
-              "title": "Thanos / Rule",
-              "url": "dashboard/db/thanos-rule?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "histogram_quantile(0.99, sum by (job, le) (rate(thanos_alert_sender_latency_seconds_bucket{}[$interval])))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{`{{job}}`}} P99",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Alert Sent Duration",
-          "type": "timeseries"
-        },
-        {
-          "collapsed": false,
-          "gridPos": {
-            "h": 1,
-            "w": 24,
-            "x": 0,
-            "y": 48
-          },
-          "id": 27,
-          "panels": [],
-          "title": "Compact",
-          "type": "row"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows rate of execution for compactions against blocks that are stored in the bucket.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "short"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 0,
-            "y": 49
-          },
-          "id": 19,
-          "links": [
-            {
-              "title": "Thanos / Compact",
-              "url": "dashboard/db/thanos-compact?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job) (rate(thanos_compact_group_compactions_total{}[$__rate_interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "compaction {{`{{job}}`}}",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Compaction Rate",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "description": "Shows ratio of errors compared to the total number of executed compactions against blocks that are stored in the bucket.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 100,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 0,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "min": 0,
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "percentunit"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byName",
-                  "options": "error"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "#E24D42",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 12,
-            "y": 49
-          },
-          "id": 20,
-          "links": [
-            {
-              "title": "Thanos / Compact",
-              "url": "dashboard/db/thanos-compact?$__url_time_range&$__all_variables"
-            }
-          ],
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.4.3",
-          "targets": [
-            {
-              "datasource": {
-                "uid": "$datasource"
-              },
-              "expr": "sum by (job) (rate(thanos_compact_group_compactions_failures_total{}[$interval])) / sum by (job) (rate(thanos_compact_group_compactions_total{}[$interval]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "error",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "title": "Compaction Errors",
-          "type": "timeseries"
-        }
-      ],
-      "preload": false,
-      "refresh": "10s",
-      "schemaVersion": 40,
-      "tags": [
-        "thanos-mixin"
-      ],
-      "templating": {
-        "list": [
-          {
-            "current": {
-              "text": "default",
-              "value": "default"
-            },
-            "name": "datasource",
-            "options": [],
-            "query": "prometheus",
-            "refresh": 1,
-            "regex": "",
-            "type": "datasource"
-          },
-          {
-            "auto": true,
-            "auto_count": 300,
-            "auto_min": "10s",
-            "current": {
-              "text": "5m",
-              "value": "5m"
-            },
-            "label": "interval",
-            "name": "interval",
-            "options": [
-              {
-                "selected": true,
+              "auto": true,
+              "auto_count": 300,
+              "auto_min": "10s",
+              "current": {
                 "text": "5m",
                 "value": "5m"
               },
-              {
-                "selected": false,
-                "text": "10m",
-                "value": "10m"
-              },
-              {
-                "selected": false,
-                "text": "30m",
-                "value": "30m"
-              },
-              {
-                "selected": false,
-                "text": "1h",
-                "value": "1h"
-              },
-              {
-                "selected": false,
-                "text": "6h",
-                "value": "6h"
-              },
-              {
-                "selected": false,
-                "text": "12h",
-                "value": "12h"
-              }
-            ],
-            "query": "5m,10m,30m,1h,6h,12h",
-            "refresh": 2,
-            "type": "interval"
-          }
-        ]
-      },
-      "time": {
-        "from": "now-1h",
-        "to": "now"
-      },
-      "timepicker": {},
-      "timezone": "UTC",
-      "title": "Thanos / Overview",
-      "uid": "0cb8830a6e957978796729870f560cda",
-      "version": 2,
-      "weekStart": ""
-    }
+              "label": "interval",
+              "name": "interval",
+              "options": [
+                {
+                  "selected": true,
+                  "text": "5m",
+                  "value": "5m"
+                },
+                {
+                  "selected": false,
+                  "text": "10m",
+                  "value": "10m"
+                },
+                {
+                  "selected": false,
+                  "text": "30m",
+                  "value": "30m"
+                },
+                {
+                  "selected": false,
+                  "text": "1h",
+                  "value": "1h"
+                },
+                {
+                  "selected": false,
+                  "text": "6h",
+                  "value": "6h"
+                },
+                {
+                  "selected": false,
+                  "text": "12h",
+                  "value": "12h"
+                }
+              ],
+              "query": "5m,10m,30m,1h,6h,12h",
+              "refresh": 2,
+              "type": "interval"
+            }
+          ]
+        },
+        "time": {
+          "from": "now-1h",
+          "to": "now"
+        },
+        "timepicker": {},
+        "timezone": "UTC",
+        "title": "Thanos / Overview",
+        "uid": "0cb8830a6e957978796729870f560cda",
+        "version": 2,
+        "weekStart": ""
+      }
