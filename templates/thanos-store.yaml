@@ -131,7 +131,7 @@ data:
                   "expr": "sum by (job, operation) (rate(thanos_objstore_bucket_operations_total{}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "{{job}} {{operation}}",
+                  "legendFormat": "{{`{{job}}`}} {{`{{operation}}`}}",
                   "range": true,
                   "refId": "A",
                   "step": 10
@@ -230,7 +230,7 @@ data:
                   "expr": "sum by (job, operation) (rate(thanos_objstore_bucket_operation_failures_total{job=~\"$job\"}[$__rate_interval])) / sum by (job, operation) (rate(thanos_objstore_bucket_operations_total{job=~\"$job\"}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "{{job}} {{operation}}",
+                  "legendFormat": "{{`{{job}}`}} {{`{{operation}}`}}",
                   "refId": "A",
                   "step": 10
                 }
@@ -328,7 +328,7 @@ data:
                   "expr": "histogram_quantile(0.99, sum by (job, operation, le) (rate(thanos_objstore_bucket_operation_duration_seconds_bucket{job=~\"$job\"}[$__rate_interval]))) * 1",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "P99 {{job}}",
+                  "legendFormat": "P99 {{`{{job}}`}}",
                   "refId": "A",
                   "step": 10
                 },
@@ -339,7 +339,7 @@ data:
                   "expr": "sum by (job, operation) (rate(thanos_objstore_bucket_operation_duration_seconds_sum{job=~\"$job\"}[$__rate_interval])) * 1  / sum by (job, operation) (rate(thanos_objstore_bucket_operation_duration_seconds_count{job=~\"$job\"}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "mean {{job}}",
+                  "legendFormat": "mean {{`{{job}}`}}",
                   "refId": "B",
                   "step": 10
                 },
@@ -350,7 +350,7 @@ data:
                   "expr": "histogram_quantile(0.50, sum by (job, operation, le) (rate(thanos_objstore_bucket_operation_duration_seconds_bucket{job=~\"$job\"}[$__rate_interval]))) * 1",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "P50 {{job}}",
+                  "legendFormat": "P50 {{`{{job}}`}}",
                   "refId": "C",
                   "step": 10
                 }
@@ -679,7 +679,7 @@ data:
                   "expr": "sum by (job, operation) (rate(thanos_bucket_store_block_drops_total{}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "block drops {{job}}",
+                  "legendFormat": "block drops {{`{{job}}`}}",
                   "range": true,
                   "refId": "A",
                   "step": 10
@@ -909,7 +909,7 @@ data:
                   "expr": "sum by (job, item_type) (rate(thanos_store_index_cache_requests_total{}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "{{job}} {{item_type}}",
+                  "legendFormat": "{{`{{job}}`}} {{`{{item_type}}`}}",
                   "range": true,
                   "refId": "A",
                   "step": 10
@@ -1009,7 +1009,7 @@ data:
                   "expr": "sum by (job, item_type) (rate(thanos_store_index_cache_hits_total{}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "{{job}} {{item_type}}",
+                  "legendFormat": "{{`{{job}}`}} {{`{{item_type}}`}}",
                   "range": true,
                   "refId": "A",
                   "step": 10
@@ -1109,7 +1109,7 @@ data:
                   "expr": "sum by (job, item_type) (rate(thanos_store_index_cache_items_added_total{}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "{{job}} {{item_type}}",
+                  "legendFormat": "{{`{{job}}`}} {{`{{item_type}}`}}",
                   "range": true,
                   "refId": "A",
                   "step": 10
@@ -1209,7 +1209,7 @@ data:
                   "expr": "sum by (job, item_type) (rate(thanos_store_index_cache_items_evicted_total{}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "{{job}} {{item_type}}",
+                  "legendFormat": "{{`{{job}}`}} {{`{{item_type}}`}}",
                   "range": true,
                   "refId": "A",
                   "step": 10
@@ -1502,7 +1502,7 @@ data:
                   "expr": "sum by (job) (rate(thanos_bucket_store_series_blocks_queried_sum{job=~\"$job\"}[$__rate_interval])) / sum by (job) (rate(thanos_bucket_store_series_blocks_queried_count{job=~\"$job\"}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "mean {{job}}",
+                  "legendFormat": "mean {{`{{job}}`}}",
                   "refId": "B",
                   "step": 10
                 },
@@ -1613,7 +1613,7 @@ data:
                   "expr": "histogram_quantile(0.99, sum by (le) (rate(thanos_bucket_store_series_data_fetched_bucket{}[$__rate_interval])))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "P99: {{data_type}} / {{job}}",
+                  "legendFormat": "P99: {{`{{data_type}}`}} / {{`{{job}}`}}",
                   "range": true,
                   "refId": "A",
                   "step": 10
@@ -1626,7 +1626,7 @@ data:
                   "expr": "sum by ( data_type) (rate(thanos_bucket_store_series_data_fetched_sum{}[$__rate_interval])) / sum by (data_type) (rate(thanos_bucket_store_series_data_fetched_count{}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "mean: {{data_type}} / {{job}}",
+                  "legendFormat": "mean: {{`{{data_type}}`}} / {{`{{job}}`}}",
                   "range": true,
                   "refId": "B",
                   "step": 10
@@ -1639,7 +1639,7 @@ data:
                   "expr": "histogram_quantile(0.50, sum by (le) (rate(thanos_bucket_store_series_data_fetched_bucket{}[$__rate_interval])))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "P50: {{data_type}} / {{job}}",
+                  "legendFormat": "P50: {{`{{data_type}}`}} / {{`{{job}}`}}",
                   "range": true,
                   "refId": "C",
                   "step": 10
@@ -1738,7 +1738,7 @@ data:
                   "expr": "histogram_quantile(0.99, sum by (le) (rate(thanos_bucket_store_series_data_touched{job=~\"$job\"}[$__rate_interval])))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "P99: {{data_type}} / {{job}}",
+                  "legendFormat": "P99: {{`{{data_type}}`}} / {{`{{job}}`}}",
                   "refId": "A",
                   "step": 10
                 },
@@ -1749,7 +1749,7 @@ data:
                   "expr": "sum by (job, data_type) (rate(thanos_bucket_store_series_data_touched_sum{job=~\"$job\"}[$__rate_interval])) / sum by (job, data_type) (rate(thanos_bucket_store_series_data_touched_count{job=~\"$job\"}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "mean: {{data_type}} / {{job}}",
+                  "legendFormat": "mean: {{`{{data_type}}`}} / {{`{{job}}`}}",
                   "refId": "B",
                   "step": 10
                 },
@@ -1760,7 +1760,7 @@ data:
                   "expr": "histogram_quantile(0.50, sum by (le) (rate(thanos_bucket_store_series_data_touched{job=~\"$job\"}[$__rate_interval])))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "P50: {{data_type}} / {{job}}",
+                  "legendFormat": "P50: {{`{{data_type}}`}} / {{`{{job}}`}}",
                   "refId": "C",
                   "step": 10
                 }
@@ -1868,7 +1868,7 @@ data:
                   "expr": "sum by (job) (rate(thanos_bucket_store_series_result_series_sum{job=~\"$job\"}[$__rate_interval])) / sum by (job) (rate(thanos_bucket_store_series_result_series_count{job=~\"$job\"}[$__rate_interval]))",
                   "format": "time_series",
                   "intervalFactor": 2,
-                  "legendFormat": "mean {{job}}",
+                  "legendFormat": "mean {{`{{job}}`}}",
                   "refId": "B",
                   "step": 10
                 },
