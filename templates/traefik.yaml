@@ -69,7 +69,7 @@ data:
           "targets": [
             {
               "expr": "sum(rate(traefik_entrypoint_requests_total{entrypoint=~\"$entrypoint\", namespace=\"$lb_name\"}[$interval])) by (entrypoint)",
-              "legendFormat": "{{entrypoint}}",
+              "legendFormat": "{{`{{entrypoint}}`}}",
               "refId": "A"
             }
           ],
@@ -86,7 +86,7 @@ data:
           "targets": [
             {
               "expr": "(sum(rate(traefik_entrypoint_request_duration_seconds_bucket{le=\"0.3\",code=\"200\",entrypoint=~\"$entrypoint\", namespace=\"$lb_name\"}[$interval])) by (entrypoint) + sum(rate(traefik_entrypoint_request_duration_seconds_bucket{le=\"1.2\",code=\"200\",entrypoint=~\"$entrypoint\", namespace=\"$lb_name\"}[$interval])) by (entrypoint)) / 2 / sum(rate(traefik_entrypoint_request_duration_seconds_count{code=\"200\",entrypoint=~\"$entrypoint\", namespace=\"$lb_name\"}[$interval])) by (entrypoint)",
-              "legendFormat": "Apdex: {{entrypoint}}",
+              "legendFormat": "Apdex: {{`{{entrypoint}}`}}",
               "refId": "A"
             }
           ],
@@ -100,7 +100,7 @@ data:
           "targets": [
             {
               "expr": "topk(10, label_replace(traefik_service_request_duration_seconds_sum{namespace=\"$lb_name\", service=~\"$service.*\",protocol=\"http\"} / traefik_service_request_duration_seconds_count{namespace=\"$lb_name\", service=~\"$service.*\",protocol=\"http\"}, \"service\", \"$1\", \"service\", \"([^@]+)@.*\"))",
-              "legendFormat": "{{service}}",
+              "legendFormat": "{{`{{service}}`}}",
               "refId": "A"
             }
           ],
@@ -114,7 +114,7 @@ data:
           "targets": [
             {
               "expr": "topk(10, label_replace(sum by (service) (rate(traefik_service_requests_total{namespace=\"$lb_name\", service=~\"$service.*\"}[$interval])), \"service\", \"$1\", \"service\", \"([^@]+)@.*\"))",
-              "legendFormat": "{{service}}",
+              "legendFormat": "{{`{{service}}`}}",
               "refId": "A"
             }
           ],
