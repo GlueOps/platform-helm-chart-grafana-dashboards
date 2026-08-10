@@ -1,0 +1,171 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-traefik
+  labels:
+    grafana_dashboard: "1"
+data:
+  #https://grafana.com/grafana/dashboards/14584-argocd/
+  glueops-traefik.json: |
+    {
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": { "type": "grafana", "uid": "-- Grafana --" },
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "target": { "limit": 100, "matchAny": false, "tags": [], "type": "dashboard" },
+            "type": "dashboard"
+          }
+        ]
+      },
+      "description": "Enhanced Traefik Kubernetes Dashboard with Namespace isolation",
+      "editable": true,
+      "fiscalYearStartMonth": 0,
+      "graphTooltip": 1,
+      "id": null,
+      "links": [],
+      "liveNow": false,
+      "panels": [
+        {
+          "collapsed": false,
+          "gridPos": { "h": 1, "w": 24, "x": 0, "y": 0 },
+          "id": 9,
+          "panels": [],
+          "title": "General Metrics",
+          "type": "row"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "gridPos": { "h": 4, "w": 4, "x": 0, "y": 1 },
+          "id": 13,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+            "textMode": "auto"
+          },
+          "targets": [
+            {
+              "expr": "count(traefik_config_reloads_total{namespace=\"$lb_name\"})",
+              "refId": "A"
+            }
+          ],
+          "title": "Traefik Replicas",
+          "type": "stat"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "gridPos": { "h": 8, "w": 10, "x": 4, "y": 1 },
+          "id": 7,
+          "options": {
+            "legend": { "calcs": ["mean", "max"], "displayMode": "table", "placement": "bottom" },
+            "tooltip": { "mode": "multi", "sort": "desc" }
+          },
+          "targets": [
+            {
+              "expr": "sum(rate(traefik_entrypoint_requests_total{entrypoint=~\"$entrypoint\", namespace=\"$lb_name\"}[$interval])) by (entrypoint)",
+              "legendFormat": "{{entrypoint}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Requests per Entrypoint",
+          "type": "timeseries"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "gridPos": { "h": 8, "w": 10, "x": 14, "y": 1 },
+          "id": 6,
+          "options": {
+            "legend": { "calcs": ["mean"], "displayMode": "table", "placement": "bottom" }
+          },
+          "targets": [
+            {
+              "expr": "(sum(rate(traefik_entrypoint_request_duration_seconds_bucket{le=\"0.3\",code=\"200\",entrypoint=~\"$entrypoint\", namespace=\"$lb_name\"}[$interval])) by (entrypoint) + sum(rate(traefik_entrypoint_request_duration_seconds_bucket{le=\"1.2\",code=\"200\",entrypoint=~\"$entrypoint\", namespace=\"$lb_name\"}[$interval])) by (entrypoint)) / 2 / sum(rate(traefik_entrypoint_request_duration_seconds_count{code=\"200\",entrypoint=~\"$entrypoint\", namespace=\"$lb_name\"}[$interval])) by (entrypoint)",
+              "legendFormat": "Apdex: {{entrypoint}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Apdex Score (Response Time Quality)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "gridPos": { "h": 8, "w": 12, "x": 0, "y": 9 },
+          "id": 23,
+          "targets": [
+            {
+              "expr": "topk(10, label_replace(traefik_service_request_duration_seconds_sum{namespace=\"$lb_name\", service=~\"$service.*\",protocol=\"http\"} / traefik_service_request_duration_seconds_count{namespace=\"$lb_name\", service=~\"$service.*\",protocol=\"http\"}, \"service\", \"$1\", \"service\", \"([^@]+)@.*\"))",
+              "legendFormat": "{{service}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Top 10 Slowest Services (sec)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+          "gridPos": { "h": 8, "w": 12, "x": 12, "y": 9 },
+          "id": 5,
+          "targets": [
+            {
+              "expr": "topk(10, label_replace(sum by (service) (rate(traefik_service_requests_total{namespace=\"$lb_name\", service=~\"$service.*\"}[$interval])), \"service\", \"$1\", \"service\", \"([^@]+)@.*\"))",
+              "legendFormat": "{{service}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Top 10 High-Traffic Services",
+          "type": "timeseries"
+        }
+      ],
+      "refresh": "30s",
+      "schemaVersion": 39,
+      "templating": {
+        "list": [
+          {
+            "hide": 0,
+            "label": "Data Source",
+            "name": "DS_PROMETHEUS",
+            "query": "prometheus",
+            "refresh": 1,
+            "type": "datasource"
+          },
+          {
+            "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+            "definition": "label_values(traefik_entrypoint_requests_total, namespace)",
+            "label": "Namespace (LB Name)",
+            "name": "lb_name",
+            "query": "label_values(traefik_entrypoint_requests_total, namespace)",
+            "refresh": 1,
+            "type": "query"
+          },
+          {
+            "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" },
+            "definition": "label_values(traefik_service_requests_total{namespace=\"$lb_name\"}, service)",
+            "includeAll": true,
+            "multi": true,
+            "name": "service",
+            "query": "label_values(traefik_service_requests_total{namespace=\"$lb_name\"}, service)",
+            "refresh": 2,
+            "regex": "/([^@]+)@.*/",
+            "type": "query"
+          },
+          {
+            "name": "interval",
+            "options": [
+              { "selected": true, "text": "1m", "value": "1m" },
+              { "selected": false, "text": "5m", "value": "5m" },
+              { "selected": false, "text": "15m", "value": "15m" }
+            ],
+            "query": "1m,5m,15m",
+            "type": "interval"
+          }
+        ]
+      },
+      "title": "Traefik - Advanced Multi-Namespace",
+      "uid": "traefik_adv_k8s"
+    }
